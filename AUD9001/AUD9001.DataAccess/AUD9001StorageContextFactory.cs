@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace AUD9001.DataAccess
 {
-    class AUD9001StorageContextFactory
+    public class AUD9001StorageContextFactory : IDesignTimeDbContextFactory<AUD9001StorageContext>
     {
+        public AUD9001StorageContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AUD9001StorageContext>();
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-KOIET98;Initial Catalog=AUD9001Storage;Integrated Security=True");
+            return new AUD9001StorageContext(optionsBuilder.Options);
+        }
+
     }
 }

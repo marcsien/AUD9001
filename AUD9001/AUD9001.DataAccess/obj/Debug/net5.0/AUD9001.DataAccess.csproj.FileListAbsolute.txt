@@ -10,3 +10,6 @@ C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\net5.0\AUD9001.
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\net5.0\AUD9001.DataAccess.dll
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\net5.0\ref\AUD9001.DataAccess.dll
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\net5.0\AUD9001.DataAccess.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\net5.0\AUD9001.DataAccess.runtimeconfig.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\net5.0\AUD9001.DataAccess.runtimeconfig.dev.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\net5.0\AUD9001.DataAccess.genruntimeconfig.cache
