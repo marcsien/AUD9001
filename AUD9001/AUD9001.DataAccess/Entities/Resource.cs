@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace AUD9001.DataAccess.Entities
 {
-    public class Process : EntityBase
+    public class Resource : EntityBase
     {
         [Required]
-        [MaxLength(100)]
-        public string Name { get; set; }
+        public DateTime AdditionDate { get; set; }
 
-        public string ProcessLiderId { get; set; }
-        
-        public List<Resources> ResourcesList { get; set; }
+        [Required]
+        public string Name { get; set; }
+        public DateTime DeleteDate { get; set; }
+        public int ResourcesId { get; set; }
+
+
     }
 }
