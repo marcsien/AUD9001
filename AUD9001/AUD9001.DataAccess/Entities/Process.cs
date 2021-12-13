@@ -15,6 +15,6 @@ namespace AUD9001.DataAccess.Entities
 
         public string ProcessLiderId { get; set; }
         
-        public List<Resources> ResourcesList { get; set; }
+        public List<Resource> Resources { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace AUD9001.DataAccess
         }
 
         public DbSet<Process> Processes { get; set; }
+        public DbSet<Resource> Resources { get; set; }
     }
 }
