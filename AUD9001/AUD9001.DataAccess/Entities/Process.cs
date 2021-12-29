@@ -17,5 +17,6 @@ namespace AUD9001.DataAccess.Entities
         
         public List<Resource> Resources { get; set; }
         public List<Input> Inputs { get; set; }
+        public List<Output> Outputs { get; set; }
     }
 }
