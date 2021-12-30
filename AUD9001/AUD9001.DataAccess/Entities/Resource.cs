@@ -10,7 +10,7 @@ namespace AUD9001.DataAccess.Entities
     public class Resource : EntityBase
     {
         [Required]
-        public DateTime AdditionDate { get; set; }
+        public DateTime CreationDate { get; set; }
 
         [Required]
         public string Name { get; set; }

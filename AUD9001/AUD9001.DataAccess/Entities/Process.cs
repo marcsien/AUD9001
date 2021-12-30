@@ -12,11 +12,14 @@ namespace AUD9001.DataAccess.Entities
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
+        public string Description { get; set; }
 
         public string ProcessLiderId { get; set; }
+        public string ProcessDeputyLiderId { get; set; }
         
         public List<Resource> Resources { get; set; }
         public List<Input> Inputs { get; set; }
         public List<Output> Outputs { get; set; }
+        public List<Target> Targets { get; set; }
     }
 }
