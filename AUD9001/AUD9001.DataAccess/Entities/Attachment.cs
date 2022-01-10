@@ -10,6 +10,7 @@ namespace AUD9001.DataAccess.Entities
     public class Attachment
     {
         [Key]
+        [Required]
         public Guid Id { get; set; }
         [Required]
         public string FileName { get; set; }

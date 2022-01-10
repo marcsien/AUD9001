@@ -27,5 +27,7 @@ namespace AUD9001.DataAccess.Entities
 
         [Required]
         public Process Process { get; set; }
+
+        public List<Attension> Attensions { get; set; }
     }
 }
