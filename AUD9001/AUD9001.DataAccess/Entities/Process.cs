@@ -14,8 +14,8 @@ namespace AUD9001.DataAccess.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public string ProcessLiderId { get; set; }
-        public string ProcessDeputyLiderId { get; set; }
+        public User ProcessLider { get; set; }
+        public User ProcessDeputyLiderId { get; set; }
         
         public List<Resource> Resources { get; set; }
         public List<Input> Inputs { get; set; }
