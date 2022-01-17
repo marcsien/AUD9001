@@ -26,5 +26,6 @@ namespace AUD9001.DataAccess.Entities
         [Required]
         public Company Company { get; set; }
         public List<Document> Documents { get; set; }
+        public List<InterestedPerson> InterestedPeople { get; set; }
     }
 }
