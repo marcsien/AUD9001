@@ -16,5 +16,6 @@ namespace AUD9001.DataAccess.Entities
         public DateTime CreationDate { get; set; }
         public DateTime DeadlineDate { get; set; }
         public List<AcceptanceCriteria> AcceptanceCriterias { get; set; }
+        public Process Process { get; set; }
     }
 }

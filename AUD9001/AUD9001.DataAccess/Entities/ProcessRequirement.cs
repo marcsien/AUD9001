@@ -14,6 +14,7 @@ namespace AUD9001.DataAccess.Entities
 
         public string Description { get; set; }
 
+        public Process Process { get; set; }
         public List<Attachment> Attachments { get; set; }
     }
 }

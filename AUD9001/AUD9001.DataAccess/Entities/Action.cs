@@ -15,5 +15,6 @@ namespace AUD9001.DataAccess.Entities
         public string ResponsiblePersonId { get; set; }
 
         public bool IsFinished { get; set; }
+        public RecommendedAction RecommendedAction { get; set; }
     }
 }

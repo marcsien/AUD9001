@@ -20,6 +20,7 @@ namespace AUD9001.DataAccess.Entities
 
         [MaxLength(100)]
         public string Description { get; set; }
+        public List<Audit> Audits { get; set; }
 
     }
 }

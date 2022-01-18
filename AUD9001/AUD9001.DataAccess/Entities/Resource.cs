@@ -16,7 +16,7 @@ namespace AUD9001.DataAccess.Entities
         public string Name { get; set; }
         public DateTime DeleteDate { get; set; }
 
-        public List<Process> Processes { get; set; }
+        public Process Process { get; set; }
         public ResourceType Type { get; set; }
 
 

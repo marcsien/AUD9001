@@ -12,5 +12,7 @@ namespace AUD9001.DataAccess.Entities
         public string Description { get; set; }
         public List<RecommendedAction> RecommendedActions { get; set; }
         public string SpottedPerson { get; set; }
+        public Audit Audit { get; set; }
     }
+
 }

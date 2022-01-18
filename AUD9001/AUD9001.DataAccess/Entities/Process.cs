@@ -27,5 +27,6 @@ namespace AUD9001.DataAccess.Entities
         public Company Company { get; set; }
         public List<Document> Documents { get; set; }
         public List<InterestedPerson> InterestedPeople { get; set; }
+        public List<Audit> Audits { get; set; }
     }
 }

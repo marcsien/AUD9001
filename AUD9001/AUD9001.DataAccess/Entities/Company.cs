@@ -18,5 +18,7 @@ namespace AUD9001.DataAccess.Entities
         [Required]
         public string Address{ get; set; }
         public string Owner { get; set; }
+        public List<Process> Processes { get; set; }
+        public List<ManagementReview> ManagementReviews { get; set; }
     }
 }

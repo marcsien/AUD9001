@@ -18,5 +18,10 @@ namespace AUD9001.DataAccess.Entities
 
         public List<Action> Actions { get; set; }
 
+        public Attension Attension { get; set; }
+
+        public Inconsistency Inconsistency { get; set; }
+
+        public Observation Observation { get; set; }
     }
 }
