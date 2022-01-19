@@ -11,6 +11,6 @@ namespace AUD9001.DataAccess.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public InterestedPerson InterestedPerson { get; set; }
-        public List<Attachment> Attachments { get; set; }
+        public Attachment Attachment { get; set; }
     }
 }

@@ -17,5 +17,6 @@ namespace AUD9001.DataAccess.Entities
         public int AR { get; set; }
         public int PR { get; set; }
         public Process Process { get; set; }
+        public List<Factor> Factors { get; set; }
     }
 }

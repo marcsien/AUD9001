@@ -11,6 +11,7 @@ namespace AUD9001.DataAccess.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public DocVersion ActiveVersion { get; set; }
+        public List<DocVersion> DocVersions { get; set; }
+        public Process Process { get; set; }
     }
 }
