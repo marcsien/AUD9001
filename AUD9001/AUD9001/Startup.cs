@@ -1,3 +1,4 @@
+using AUD9001.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace AUD9001
 {
@@ -26,6 +28,7 @@ namespace AUD9001
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(serviceType: typeof(IRepository<>), implementationType: typeof(Repository<>));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
