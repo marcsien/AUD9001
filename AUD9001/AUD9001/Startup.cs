@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +30,10 @@ namespace AUD9001
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped(serviceType: typeof(IRepository<>), implementationType: typeof(Repository<>));
+
+            services.AddDbContext<AUD9001StorageContext>(
+                opt =>
+                opt.UseSqlServer(this.Configuration.GetConnectionString("AUD9001DatabaseConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
