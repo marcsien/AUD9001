@@ -1,0 +1,13 @@
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\netcoreapp3.1\AUD9001.DataAccess.deps.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\netcoreapp3.1\AUD9001.DataAccess.runtimeconfig.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\netcoreapp3.1\AUD9001.DataAccess.runtimeconfig.dev.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\netcoreapp3.1\AUD9001.DataAccess.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\bin\Debug\netcoreapp3.1\AUD9001.DataAccess.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.AssemblyInfo.cs
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.DataAccess\obj\Debug\netcoreapp3.1\AUD9001.DataAccess.genruntimeconfig.cache
