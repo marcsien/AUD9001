@@ -10,10 +10,10 @@ namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProcessController : ControllerBase
+    public class ProcessesController : ControllerBase
     {
         private readonly IRepository<Process> processRepository;
-        public ProcessController(IRepository<Process> processRepository)
+        public ProcessesController(IRepository<Process> processRepository)
         {
             this.processRepository = processRepository;
         }

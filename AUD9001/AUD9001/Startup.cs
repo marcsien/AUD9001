@@ -1,4 +1,6 @@
+using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.DataAccess;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,8 @@ namespace AUD9001
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(ResponseBase<>));
+
             services.AddScoped(serviceType: typeof(IRepository<>), implementationType: typeof(Repository<>));
 
             services.AddDbContext<AUD9001StorageContext>(

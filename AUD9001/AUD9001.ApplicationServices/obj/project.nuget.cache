@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "pUabOloc4sPQJ4Sya5SaEkhui/xMS4l/qoeuSRsaU5nygcP6zBZKsp9Y2GgQeT3YQLOtRLRr4luHFvLpRcCsnw==",
+  "dgSpecHash": "L6wcUY6HOuvb7e0PYgQd9OpaEMMGGr4yDb+K7woIY1mjVJyxUmM7kUwanjoUKcUzgya52D5tV4b6qbtvZoSwxw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ms\\Desktop\\AUD9001\\AUD9001\\AUD9001.ApplicationServices\\AUD9001.ApplicationServices.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ms\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\ms\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\ms\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\ms\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
