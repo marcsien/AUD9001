@@ -10,3 +10,6 @@ C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\obj\Debug\net5.0
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\obj\Debug\net5.0\AUD9001.ApplicationServices.dll
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\obj\Debug\net5.0\ref\AUD9001.ApplicationServices.dll
 C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\obj\Debug\net5.0\AUD9001.ApplicationServices.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\bin\Debug\net5.0\AUD9001.DataAccess.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\bin\Debug\net5.0\AUD9001.DataAccess.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\AUD9001.ApplicationServices\obj\Debug\net5.0\AUD9001.ApplicationServices.csproj.CopyComplete

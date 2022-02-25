@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using AUD9001.ApplicationServices.API.Domain;
 
 namespace AUD9001.Controllers
 {
@@ -12,9 +14,19 @@ namespace AUD9001.Controllers
     [Route("[controller]")]
     public class CompaniesController : ControllerBase
     {
-        public CompaniesController()
+        private readonly IMediator mediator;
+        public CompaniesController(IMediator mediator)
         {
-
+            this.mediator = mediator;
         }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAllCompanies([FromQuery] GetCompaniesRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
     }
 }
