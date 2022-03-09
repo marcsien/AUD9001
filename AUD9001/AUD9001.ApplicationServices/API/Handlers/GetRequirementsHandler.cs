@@ -15,7 +15,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
     {
         private readonly IRepository<Requirement> requirementRepository;
 
-        public GetRequirementsHandler(IRepository<Requirement> requirementRepository)
+        public GetRequirementsHandler(IRepository<DataAccess.Entities.Requirement> requirementRepository)
         {
             this.requirementRepository = requirementRepository;
         }

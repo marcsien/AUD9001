@@ -15,7 +15,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
     {
         private readonly IRepository<Resource> resourceRepository;
 
-        public GetResourcesHandler(IRepository<Resource> resourceRepository)
+        public GetResourcesHandler(IRepository<DataAccess.Entities.Resource> resourceRepository)
         {
             this.resourceRepository = resourceRepository;
         }
