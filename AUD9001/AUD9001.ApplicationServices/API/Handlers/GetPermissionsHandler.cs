@@ -15,7 +15,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
     {
         private readonly IRepository<Permission> permissionRepository;
 
-        public GetPermissionsHandler(IRepository<Permission> permissionRepository)
+        public GetPermissionsHandler(IRepository<DataAccess.Entities.Permission> permissionRepository)
         {
             this.permissionRepository = permissionRepository;
         }
