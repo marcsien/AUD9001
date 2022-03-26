@@ -15,7 +15,7 @@ namespace AUD9001.DataAccess
         public DbSet<AcceptanceCriteria> AcceptanceCriterias { get; set; }
         public DbSet<Action> Actions { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
-        public DbSet<Attension> Attensions { get; set; }
+        public DbSet<Attention> Attensions { get; set; }
         public DbSet<Audit> Audits { get; set; }
         public DbSet<AuditType> AuditTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
