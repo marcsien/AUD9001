@@ -40,5 +40,5 @@ namespace AUD9001.DataAccess
         public DbSet<User> Users { get; set; }
 
 
-}
+    }
 }

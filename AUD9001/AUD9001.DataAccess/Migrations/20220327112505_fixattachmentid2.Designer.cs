@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AUD9001.DataAccess.Migrations
 {
     [DbContext(typeof(AUD9001StorageContext))]
-    [Migration("20220327104245_entitybasetoattachment2")]
-    partial class entitybasetoattachment2
+    [Migration("20220327112505_fixattachmentid2")]
+    partial class fixattachmentid2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
