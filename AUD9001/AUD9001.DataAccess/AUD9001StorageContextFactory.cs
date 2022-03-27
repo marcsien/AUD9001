@@ -8,7 +8,7 @@ namespace AUD9001.DataAccess
         public AUD9001StorageContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AUD9001StorageContext>();
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-KOIET98;Initial Catalog=AUD9001Storage;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-HELIKOP;Initial Catalog=AUD9001Storage;Integrated Security=True");
             return new AUD9001StorageContext(optionsBuilder.Options);
         }
 

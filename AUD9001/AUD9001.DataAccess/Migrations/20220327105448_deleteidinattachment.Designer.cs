@@ -4,14 +4,16 @@ using AUD9001.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AUD9001.DataAccess.Migrations
 {
     [DbContext(typeof(AUD9001StorageContext))]
-    partial class AUD9001StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20220327105448_deleteidinattachment")]
+    partial class deleteidinattachment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +75,7 @@ namespace AUD9001.DataAccess.Migrations
 
             modelBuilder.Entity("AUD9001.DataAccess.Entities.Attachment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Iddummy")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -99,7 +101,7 @@ namespace AUD9001.DataAccess.Migrations
                     b.Property<int?>("ProcessRequirementId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Iddummy");
 
                     b.HasIndex("ProcessRequirementId");
 
@@ -237,7 +239,7 @@ namespace AUD9001.DataAccess.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("AttachmentId")
+                    b.Property<int?>("AttachmentIddummy")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
@@ -254,7 +256,7 @@ namespace AUD9001.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AttachmentId");
+                    b.HasIndex("AttachmentIddummy");
 
                     b.HasIndex("DocumentId");
 
@@ -293,7 +295,7 @@ namespace AUD9001.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AttachmentId")
+                    b.Property<int?>("AttachmentIddummy")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -307,7 +309,7 @@ namespace AUD9001.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AttachmentId");
+                    b.HasIndex("AttachmentIddummy");
 
                     b.HasIndex("InterestedPersonId");
 
@@ -612,7 +614,7 @@ namespace AUD9001.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AttachmentId")
+                    b.Property<int?>("AttachmentIddummy")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -626,7 +628,7 @@ namespace AUD9001.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AttachmentId");
+                    b.HasIndex("AttachmentIddummy");
 
                     b.HasIndex("InterestedPersonId");
 
@@ -891,7 +893,7 @@ namespace AUD9001.DataAccess.Migrations
                 {
                     b.HasOne("AUD9001.DataAccess.Entities.Attachment", "Attachment")
                         .WithMany()
-                        .HasForeignKey("AttachmentId");
+                        .HasForeignKey("AttachmentIddummy");
 
                     b.HasOne("AUD9001.DataAccess.Entities.Document", "Document")
                         .WithMany("DocVersions")
@@ -921,7 +923,7 @@ namespace AUD9001.DataAccess.Migrations
                 {
                     b.HasOne("AUD9001.DataAccess.Entities.Attachment", "Attachment")
                         .WithMany()
-                        .HasForeignKey("AttachmentId");
+                        .HasForeignKey("AttachmentIddummy");
 
                     b.HasOne("AUD9001.DataAccess.Entities.InterestedPerson", "InterestedPerson")
                         .WithMany("Expectations")
@@ -1040,7 +1042,7 @@ namespace AUD9001.DataAccess.Migrations
                 {
                     b.HasOne("AUD9001.DataAccess.Entities.Attachment", "Attachment")
                         .WithMany()
-                        .HasForeignKey("AttachmentId");
+                        .HasForeignKey("AttachmentIddummy");
 
                     b.HasOne("AUD9001.DataAccess.Entities.InterestedPerson", "InterestedPerson")
                         .WithMany("Requirements")

@@ -7,11 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AUD9001.DataAccess.Entities
 {
-    public class Attachment
+    public class Attachment : EntityBase
     {
-        [Key]
-        [Required]
-        public Guid Id { get; set; }
         [Required]
         public string FileName { get; set; }
         [Required]
@@ -24,5 +21,6 @@ namespace AUD9001.DataAccess.Entities
         public DateTime CreationDate { get; set; }
 
         public DateTime DeleteDate { get; set; }
+
     }
 }
