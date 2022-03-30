@@ -1,4 +1,5 @@
 using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.Mappings;
 using AUD9001.DataAccess;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace AUD9001
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(ProcessesProfile).Assembly);
+
             services.AddMediatR(typeof(ResponseBase<>));
 
             services.AddScoped(serviceType: typeof(IRepository<>), implementationType: typeof(Repository<>));
