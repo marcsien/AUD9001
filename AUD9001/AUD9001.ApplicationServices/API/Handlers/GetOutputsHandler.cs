@@ -1,6 +1,7 @@
 ﻿using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.Entities;
+using AutoMapper;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,28 +15,18 @@ namespace AUD9001.ApplicationServices.API.Handlers
     public class GetOutputsHandler : IRequestHandler<GetOutputsRequest, GetOutputsResponse>
     {
         private readonly IRepository<Output> outputRepository;
+        private readonly IMapper mapper;
 
-        public GetOutputsHandler(IRepository<DataAccess.Entities.Output> outputRepository)
+        public GetOutputsHandler(IRepository<DataAccess.Entities.Output> outputRepository, IMapper mapper)
         {
             this.outputRepository = outputRepository;
+            this.mapper = mapper;
         }
 
         public Task<GetOutputsResponse> Handle(GetOutputsRequest request, CancellationToken cancellationToken)
         {
-            var outputs = this.outputRepository.GetAll();
-
-            var domainOutputs = outputs.Select(x => new Domain.Models.Output()
-            {
-                Name = x.Name,
-                Description = x.Description
-            });
-
-            var response = new GetOutputsResponse()
-            {
-                Data = domainOutputs.ToList()
-            };
-
-            return Task.FromResult(response);
+            var mappedOutputs = this.mapper.Map<List<Domain.Models.Output>>(this.outputRepository.GetAll());
+            return Task.FromResult(new GetOutputsResponse() { Data = mappedOutputs });
         }
     }
 }
