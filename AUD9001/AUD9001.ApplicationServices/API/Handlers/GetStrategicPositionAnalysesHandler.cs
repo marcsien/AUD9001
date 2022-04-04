@@ -19,9 +19,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.strategicPositionAnalysisRepository = strategicPositionAnalysisRepository;
         }
 
-        public Task<GetStrategicPositionAnalysesResponse> Handle(GetStrategicPositionAnalysesRequest request, CancellationToken cancellationToken)
+        public async Task<GetStrategicPositionAnalysesResponse> Handle(GetStrategicPositionAnalysesRequest request, CancellationToken cancellationToken)
         {
-            var strategicPositionAnalyses = this.strategicPositionAnalysisRepository.GetAll();
+            var strategicPositionAnalyses = await this.strategicPositionAnalysisRepository.GetAll();
 
             var domainStrategicPositionAnalyses = strategicPositionAnalyses.Select(x => new Domain.Models.StrategicPositionAnalysis()
             {
@@ -40,7 +40,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainStrategicPositionAnalyses.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

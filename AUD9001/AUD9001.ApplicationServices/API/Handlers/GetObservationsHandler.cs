@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.observationRepository = observationRepository;
         }
 
-        public Task<GetObservationsResponse> Handle(GetObservationsRequest request, CancellationToken cancellationToken)
+        public async Task<GetObservationsResponse> Handle(GetObservationsRequest request, CancellationToken cancellationToken)
         {
-            var observations = this.observationRepository.GetAll();
+            var observations = await this.observationRepository.GetAll();
 
             var domainObservations = observations.Select(x => new Domain.Models.Observation()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainObservations.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

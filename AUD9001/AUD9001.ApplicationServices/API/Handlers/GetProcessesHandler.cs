@@ -23,10 +23,10 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetProcessesResponse> Handle(GetProcessesRequest request, CancellationToken cancellationToken)
+        public async Task<GetProcessesResponse> Handle(GetProcessesRequest request, CancellationToken cancellationToken)
         {
-            var processes = this.processRepository.GetAll();
-            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(this.processRepository.GetAll());
+            //var processes = await this.processRepository.GetAll();
+            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(await this.processRepository.GetAll());
 
             //var domainProcesses = processes.Select(x => new Domain.Models.Process()
             //{
@@ -41,8 +41,8 @@ namespace AUD9001.ApplicationServices.API.Handlers
             //};
 
             //var response = new GetProcessesResponse() { Data = mappedProcesses };
-
-            return Task.FromResult(new GetProcessesResponse() { Data = mappedProcesses });
+            var response = new GetProcessesResponse() { Data = mappedProcesses };
+            return response;
         }
     }
 }

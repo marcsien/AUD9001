@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.auditTypeRepository = auditTypeRepository;
         }
 
-        public Task<GetAuditTypesResponse> Handle(GetAuditTypesRequest request, CancellationToken cancellationToken)
+        public async Task<GetAuditTypesResponse> Handle(GetAuditTypesRequest request, CancellationToken cancellationToken)
         {
-            var auditTypes = this.auditTypeRepository.GetAll();
+            var auditTypes = await this.auditTypeRepository.GetAll();
 
             var domainAuditTypes = auditTypes.Select(x => new Domain.Models.AuditType()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainAuditTypes.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

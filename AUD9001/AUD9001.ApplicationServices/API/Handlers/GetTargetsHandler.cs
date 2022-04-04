@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.targetRepository = targetRepository;
         }
 
-        public Task<GetTargetsResponse> Handle(GetTargetsRequest request, CancellationToken cancellationToken)
+        public async Task<GetTargetsResponse> Handle(GetTargetsRequest request, CancellationToken cancellationToken)
         {
-            var targets = this.targetRepository.GetAll();
+            var targets = await this.targetRepository.GetAll();
 
             var domainTargets = targets.Select(x => new Domain.Models.Target()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainTargets.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

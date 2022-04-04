@@ -19,9 +19,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.userRepository = userRepository;
         }
 
-        public Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
+        public async Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
         {
-            var users = this.userRepository.GetAll();
+            var users = await this.userRepository.GetAll();
 
             var domainUsers = users.Select(x => new Domain.Models.User()
             {
@@ -36,7 +36,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainUsers.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

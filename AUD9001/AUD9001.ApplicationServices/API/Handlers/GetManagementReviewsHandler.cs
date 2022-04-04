@@ -23,10 +23,11 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetManagementReviewsResponse> Handle(GetManagementReviewsRequest request, CancellationToken cancellationToken)
+        public async Task<GetManagementReviewsResponse> Handle(GetManagementReviewsRequest request, CancellationToken cancellationToken)
         {
-            var mappedManagementReviews = this.mapper.Map<List<Domain.Models.ManagementReview>>(this.managementReviewRepository.GetAll());
-            return Task.FromResult(new GetManagementReviewsResponse() { Data = mappedManagementReviews });
+            var mappedManagementReviews = this.mapper.Map<List<Domain.Models.ManagementReview>>(await this.managementReviewRepository.GetAll());
+            var response = new GetManagementReviewsResponse() { Data = mappedManagementReviews };
+            return response;
         }
     }
 }

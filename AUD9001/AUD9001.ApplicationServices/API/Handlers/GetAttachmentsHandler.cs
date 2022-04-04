@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.attachmentRepository = attachmentRepository;
         }
 
-        public Task<GetAttachmentsResponse> Handle(GetAttachmentsRequest request, CancellationToken cancellationToken)
+        public async Task<GetAttachmentsResponse> Handle(GetAttachmentsRequest request, CancellationToken cancellationToken)
         {
-            var attachments = this.attachmentRepository.GetAll();
+            var attachments = await this.attachmentRepository.GetAll();
 
             var domainAttachments = attachments.Select(x => new Domain.Models.Attachment()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainAttachments.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.interestedPersonRepository = interestedPersonRepository;
         }
 
-        public Task<GetInterestedPersonsResponse> Handle(GetInterestedPersonsRequest request, CancellationToken cancellationToken)
+        public async Task<GetInterestedPersonsResponse> Handle(GetInterestedPersonsRequest request, CancellationToken cancellationToken)
         {
-            var interestedPersons = this.interestedPersonRepository.GetAll();
+            var interestedPersons = await this.interestedPersonRepository.GetAll();
 
             var domainInterestedPersons = interestedPersons.Select(x => new Domain.Models.InterestedPerson()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainInterestedPersons.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

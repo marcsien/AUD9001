@@ -18,9 +18,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             this.roleRepository = roleRepository;
         }
-        public Task<GetRolesResponse> Handle(GetRolesRequest request, CancellationToken cancellationToken)
+        public async Task<GetRolesResponse> Handle(GetRolesRequest request, CancellationToken cancellationToken)
         {
-            var roles = this.roleRepository.GetAll();
+            var roles = await this.roleRepository.GetAll();
 
             var domainRoles = roles.Select(x => new Domain.Models.Role()
             {
@@ -33,7 +33,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainRoles.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

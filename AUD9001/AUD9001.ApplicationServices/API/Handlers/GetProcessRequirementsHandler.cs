@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.processRequirementRepository = processRequirementRepository;
         }
 
-        public Task<GetProcessRequirementsResponse> Handle(GetProcessRequirementsRequest request, CancellationToken cancellationToken)
+        public async  Task<GetProcessRequirementsResponse> Handle(GetProcessRequirementsRequest request, CancellationToken cancellationToken)
         {
-            var processrequirements = this.processRequirementRepository.GetAll();
+            var processrequirements = await this.processRequirementRepository.GetAll();
 
             var domainprocessrequirements = processrequirements.Select(x => new Domain.Models.ProcessRequirement()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainprocessrequirements.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

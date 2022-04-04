@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.resourceRepository = resourceRepository;
         }
 
-        public Task<GetResourcesResponse> Handle(GetResourcesRequest request, CancellationToken cancellationToken)
+        public async Task<GetResourcesResponse> Handle(GetResourcesRequest request, CancellationToken cancellationToken)
         {
-            var resources = this.resourceRepository.GetAll();
+            var resources = await this.resourceRepository.GetAll();
 
             var domainResources = resources.Select(x => new Domain.Models.Resource()
             {
@@ -34,7 +34,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainResources.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.auditRepository = auditsRepository;
         }
 
-        public Task<GetAuditsResponse> Handle(GetAuditsRequest request, CancellationToken cancellationToken)
+        public async Task<GetAuditsResponse> Handle(GetAuditsRequest request, CancellationToken cancellationToken)
         {
-            var audits = this.auditRepository.GetAll();
+            var audits = await this.auditRepository.GetAll();
 
             var domainAudits = audits.Select(x => new Domain.Models.Audit()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainAudits.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

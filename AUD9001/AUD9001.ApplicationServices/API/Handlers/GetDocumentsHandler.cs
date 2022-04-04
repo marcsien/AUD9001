@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.documentRepository = documentRepository;
         }
 
-        public Task<GetDocumentsResponse> Handle(GetDocumentsRequest request, CancellationToken cancellationToken)
+        public async Task<GetDocumentsResponse> Handle(GetDocumentsRequest request, CancellationToken cancellationToken)
         {
-            var documents = this.documentRepository.GetAll();
+            var documents = await this.documentRepository.GetAll();
 
             var domainDocuments = documents.Select(x => new Domain.Models.Document()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainDocuments.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.recommendedactionRepository = recommendedactionRepository;
         }
 
-        public Task<GetRecommendedActionsResponse> Handle(GetRecommendedActionsRequest request, CancellationToken cancellationToken)
+        public async Task<GetRecommendedActionsResponse> Handle(GetRecommendedActionsRequest request, CancellationToken cancellationToken)
         {
-            var recommendedactions = this.recommendedactionRepository.GetAll();
+            var recommendedactions = await this.recommendedactionRepository.GetAll();
 
             var domainrecommendedactions = recommendedactions.Select(x => new Domain.Models.RecommendedAction()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainrecommendedactions.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

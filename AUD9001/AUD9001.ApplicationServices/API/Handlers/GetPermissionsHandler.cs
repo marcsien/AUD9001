@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.permissionRepository = permissionRepository;
         }
 
-        public Task<GetPermissionsResponse> Handle(GetPermissionsRequest request, CancellationToken cancellationToken)
+        public async Task<GetPermissionsResponse> Handle(GetPermissionsRequest request, CancellationToken cancellationToken)
         {
-            var permissions = this.permissionRepository.GetAll();
+            var permissions = await this.permissionRepository.GetAll();
 
             var domainpermissions = permissions.Select(x => new Domain.Models.Permission()
             {
@@ -34,7 +34,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainpermissions.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 

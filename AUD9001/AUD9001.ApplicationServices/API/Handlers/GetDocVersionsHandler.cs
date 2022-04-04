@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.docVersionRepository = docVersionRepository;
         }
 
-        public Task<GetDocVersionsResponse> Handle(GetDocVersionsRequest request, CancellationToken cancellationToken)
+        public async Task<GetDocVersionsResponse> Handle(GetDocVersionsRequest request, CancellationToken cancellationToken)
         {
-            var docVersions = this.docVersionRepository.GetAll();
+            var docVersions = await this.docVersionRepository.GetAll();
 
             var domainDocVersions = docVersions.Select(x => new Domain.Models.DocVersion()
             {
@@ -34,7 +34,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainDocVersions.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

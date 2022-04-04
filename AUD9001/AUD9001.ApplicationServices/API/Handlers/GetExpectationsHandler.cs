@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.expectationRepository = expectationRepository;
         }
 
-        public Task<GetExpectationsResponse> Handle(GetExpectationsRequest request, CancellationToken cancellationToken)
+        public async Task<GetExpectationsResponse> Handle(GetExpectationsRequest request, CancellationToken cancellationToken)
         {
-            var expectations = this.expectationRepository.GetAll();
+            var expectations = await this.expectationRepository.GetAll();
 
             var domainExpectations = expectations.Select(x => new Domain.Models.Expectation()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainExpectations.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.inconsistencyRepository = inconsistencyRepository;
         }
 
-        public Task<GetInconsistenciesResponse> Handle(GetInconsistenciesRequest request, CancellationToken cancellationToken)
+        public async Task<GetInconsistenciesResponse> Handle(GetInconsistenciesRequest request, CancellationToken cancellationToken)
         {
-            var inconsistencies = this.inconsistencyRepository.GetAll();
+            var inconsistencies = await this.inconsistencyRepository.GetAll();
 
             var domainInconsistencies = inconsistencies.Select(x => new Domain.Models.Inconsistency()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainInconsistencies.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

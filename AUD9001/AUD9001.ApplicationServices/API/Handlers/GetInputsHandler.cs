@@ -23,10 +23,11 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetInputsResponse> Handle(GetInputsRequest request, CancellationToken cancellationToken)
+        public async Task<GetInputsResponse> Handle(GetInputsRequest request, CancellationToken cancellationToken)
         {
-            var mappedInputs = this.mapper.Map<List<Domain.Models.Input>>(this.inputRepository.GetAll());
-            return Task.FromResult(new GetInputsResponse() { Data = mappedInputs});
+            var mappedInputs = this.mapper.Map<List<Domain.Models.Input>>(await this.inputRepository.GetAll());
+            var response = new GetInputsResponse() { Data = mappedInputs };
+            return response;
         }
     }
 }

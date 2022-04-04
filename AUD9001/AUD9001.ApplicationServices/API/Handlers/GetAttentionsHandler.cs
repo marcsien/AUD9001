@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.attentionRepository = attentionRepository;
         }
 
-        public Task<GetAttentionsResponse> Handle(GetAttentionsRequest request, CancellationToken cancellationToken)
+        public async Task<GetAttentionsResponse> Handle(GetAttentionsRequest request, CancellationToken cancellationToken)
         {
-            var attentions = this.attentionRepository.GetAll();
+            var attentions = await this.attentionRepository.GetAll();
 
             var domainAttentions = attentions.Select(x => new Domain.Models.Attention()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainAttentions.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

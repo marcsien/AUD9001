@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.acceptnceCriteriasRepository = acceptnceCriteriasRepository;
         }
 
-        public Task<GetAcceptanceCriteriasResponse> Handle(GetAcceptanceCriteriasRequest request, CancellationToken cancellationToken)
+        public async Task<GetAcceptanceCriteriasResponse> Handle(GetAcceptanceCriteriasRequest request, CancellationToken cancellationToken)
         {
-            var acceptanceCriterias = this.acceptnceCriteriasRepository.GetAll();
+            var acceptanceCriterias = await this.acceptnceCriteriasRepository.GetAll();
 
             var domainAcceptnceCriterias = acceptanceCriterias.Select(x => new Domain.Models.AcceptanceCriteria()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainAcceptnceCriterias.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

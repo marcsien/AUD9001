@@ -20,9 +20,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
             this.factorRepository = factorRepository;
         }
 
-        public Task<GetFactorsResponse> Handle(GetFactorsRequest request, CancellationToken cancellationToken)
+        public async Task<GetFactorsResponse> Handle(GetFactorsRequest request, CancellationToken cancellationToken)
         {
-            var factors = this.factorRepository.GetAll();
+            var factors = await this.factorRepository.GetAll();
 
             var domainFactors = factors.Select(x => new Domain.Models.Factor()
             {
@@ -35,7 +35,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainFactors.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

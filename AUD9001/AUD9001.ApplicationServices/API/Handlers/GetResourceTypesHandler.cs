@@ -17,9 +17,9 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             this.resourceTypeRepository = resourceTypeRepository;
         }
-        public Task<GetResourceTypesResponse> Handle(GetResourceTypesRequest request, CancellationToken cancellationToken)
+        public async Task<GetResourceTypesResponse> Handle(GetResourceTypesRequest request, CancellationToken cancellationToken)
         {
-            var resourcetypes = this.resourceTypeRepository.GetAll();
+            var resourcetypes = await this.resourceTypeRepository.GetAll();
 
             var domainresourcetypes = resourcetypes.Select(x => new Domain.Models.ResourceType()
             {
@@ -32,7 +32,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Data = domainresourcetypes.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }
