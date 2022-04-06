@@ -1,5 +1,6 @@
 ﻿using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.DataAccess;
+using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess.Entities;
 using AutoMapper;
 using MediatR;
@@ -14,33 +15,19 @@ namespace AUD9001.ApplicationServices.API.Handlers
 {
     public class GetProcessesHandler : IRequestHandler<GetProcessesRequest, GetProcessesResponse>
     {
-        private readonly IRepository<Process> processRepository;
+        private readonly IQueryExecutor queryexecutor;
         private readonly IMapper mapper;
 
-        public GetProcessesHandler(IRepository<DataAccess.Entities.Process> processRepository, IMapper mapper)
+        public GetProcessesHandler(IMapper mapper, IQueryExecutor executor)
         {
-            this.processRepository = processRepository;
+            this.queryexecutor = executor;
             this.mapper = mapper;
         }
-
         public async Task<GetProcessesResponse> Handle(GetProcessesRequest request, CancellationToken cancellationToken)
         {
-            //var processes = await this.processRepository.GetAll();
-            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(await this.processRepository.GetAll());
-
-            //var domainProcesses = processes.Select(x => new Domain.Models.Process()
-            //{
-            //    Id = x.Id,
-            //    Name = x.Name,
-            //    Description = x.Description
-            //});
-
-            //var response = new GetProcessesResponse()
-            //{
-            //    Data = domainProcesses.ToList()
-            //};
-
-            //var response = new GetProcessesResponse() { Data = mappedProcesses };
+            var query = new GetProcessesQuery();
+            var books = await this.queryexecutor.Execute(query);
+            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(books);
             var response = new GetProcessesResponse() { Data = mappedProcesses };
             return response;
         }
