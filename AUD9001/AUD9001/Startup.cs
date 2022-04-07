@@ -1,6 +1,7 @@
 using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.ApplicationServices.Mappings;
 using AUD9001.DataAccess;
+using AUD9001.DataAccess.CQRS;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,7 @@ namespace AUD9001
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
 
             services.AddAutoMapper(typeof(ProcessesProfile).Assembly);
 
