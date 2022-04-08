@@ -29,7 +29,7 @@ namespace AUD9001.Controllers
             return this.Ok(response);
         }
 
-        //below part to furhter refinement
+        // TODO below part to furhter refinement - it returns all processes
         [HttpGet]
         [Route("{processId}")]
         public async Task<IActionResult> GetProcessById([FromQuery] GetProcessesRequest request)
@@ -37,24 +37,14 @@ namespace AUD9001.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
-    //oldversion
-    //[ApiController]
-    //[Route("[controller]")]
-    //public class ProcessesController : ControllerBase
-    //{
-    //    private readonly IRepository<Process> processRepository;
-    //    public ProcessesController(IRepository<Process> processRepository)
-    //    {
-    //        this.processRepository = processRepository;
-    //    }
-
-    //    [HttpGet]
-    //    [Route("")]
-    //    public IEnumerable<Process> GetAllProcesses() => this.processRepository.GetAll();
-
-    //    [HttpGet]
-    //    [Route("{processId}")]
-    //    public Process GetProcessById(int processId) => this.processRepository.GetById(processId);
-    //}
 }

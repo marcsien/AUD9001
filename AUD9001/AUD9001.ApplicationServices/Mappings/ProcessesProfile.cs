@@ -1,4 +1,6 @@
-﻿using AUD9001.ApplicationServices.API.Domain.Models;
+﻿using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.API.Domain.Models;
+using AUD9001.DataAccess;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,15 @@ namespace AUD9001.ApplicationServices.Mappings
     {
         public ProcessesProfile()
         {
+            this.CreateMap<AddProcessRequest, AUD9001.DataAccess.Entities.Process>()
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
+
             this.CreateMap<AUD9001.DataAccess.Entities.Process, Process>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
-        }
+
+        } 
     }
 }

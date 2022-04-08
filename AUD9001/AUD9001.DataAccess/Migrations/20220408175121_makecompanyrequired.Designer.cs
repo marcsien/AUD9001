@@ -4,14 +4,16 @@ using AUD9001.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AUD9001.DataAccess.Migrations
 {
     [DbContext(typeof(AUD9001StorageContext))]
-    partial class AUD9001StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20220408175121_makecompanyrequired")]
+    partial class makecompanyrequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -524,7 +526,7 @@ namespace AUD9001.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -999,7 +1001,9 @@ namespace AUD9001.DataAccess.Migrations
                 {
                     b.HasOne("AUD9001.DataAccess.Entities.Company", "Company")
                         .WithMany("Processes")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Company");
                 });

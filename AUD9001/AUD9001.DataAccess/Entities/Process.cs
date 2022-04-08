@@ -21,8 +21,6 @@ namespace AUD9001.DataAccess.Entities
         public List<Output> Outputs { get; set; }
         public List<Target> Targets { get; set; }
         public List<ProcessRequirement> Requirements { get; set; }
-
-        [Required]
         public Company Company { get; set; }
         public List<Document> Documents { get; set; }
         public List<InterestedPerson> InterestedPeople { get; set; }
