@@ -10,9 +10,17 @@ namespace AUD9001.DataAccess.CQRS.Queries
 {
     public class GetProcessesQuery : QueryBase<List<Process>>
     {
+        public string Name { get; set; }
         public override Task<List<Process>> Execute(AUD9001StorageContext context)
         {
-            return context.Processes.ToListAsync();
+            if(String.IsNullOrEmpty(this.Name))
+            {
+                return context.Processes.ToListAsync();
+            }
+            else
+            {
+                return context.Processes.Where(x => x.Name == this.Name).ToListAsync();
+            }           
         }
     }
 }

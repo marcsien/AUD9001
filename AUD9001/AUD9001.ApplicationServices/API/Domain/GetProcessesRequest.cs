@@ -9,5 +9,6 @@ namespace AUD9001.ApplicationServices.API.Domain
 {
     public class GetProcessesRequest : IRequest<GetProcessesResponse>
     {
+        public string Name { get; set; }
     }
 }

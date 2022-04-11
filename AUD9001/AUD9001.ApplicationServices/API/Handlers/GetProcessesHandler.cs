@@ -25,7 +25,10 @@ namespace AUD9001.ApplicationServices.API.Handlers
         }
         public async Task<GetProcessesResponse> Handle(GetProcessesRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetProcessesQuery();
+            var query = new GetProcessesQuery()
+            {
+                Name = request.Name
+            };
             var books = await this.queryexecutor.Execute(query);
             var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(books);
             var response = new GetProcessesResponse() { Data = mappedProcesses };
