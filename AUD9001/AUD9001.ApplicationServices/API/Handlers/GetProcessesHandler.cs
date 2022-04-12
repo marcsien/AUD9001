@@ -29,8 +29,8 @@ namespace AUD9001.ApplicationServices.API.Handlers
             {
                 Name = request.Name
             };
-            var books = await this.queryexecutor.Execute(query);
-            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(books);
+            var processes = await this.queryexecutor.Execute(query);
+            var mappedProcesses = this.mapper.Map<List<Domain.Models.Process>>(processes);
             var response = new GetProcessesResponse() { Data = mappedProcesses };
             return response;
         }

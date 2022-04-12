@@ -32,8 +32,12 @@ namespace AUD9001.Controllers
         // TODO below part to furhter refinement - it returns all processes
         [HttpGet]
         [Route("{processId}")]
-        public async Task<IActionResult> GetProcessById([FromQuery] GetProcessesRequest request)
+        public async Task<IActionResult> GetProcessById([FromRoute] int processId)
         {
+            var request = new GetProcessByIdRequest
+            {
+                ProcessId = processId
+            };
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
