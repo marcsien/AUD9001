@@ -29,7 +29,6 @@ namespace AUD9001.Controllers
             return this.Ok(response);
         }
 
-        // TODO below part to furhter refinement - it returns all processes
         [HttpGet]
         [Route("{processId}")]
         public async Task<IActionResult> GetProcessById([FromRoute] int processId)
@@ -47,6 +46,18 @@ namespace AUD9001.Controllers
         [Route("")]
         public async Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
         {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{processId}")]
+        public async Task<IActionResult> DeleteProcess([FromRoute] int processId)
+        {
+            var request = new DeleteProcessByIdRequest
+            {
+                ProcessId = processId
+            };
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
