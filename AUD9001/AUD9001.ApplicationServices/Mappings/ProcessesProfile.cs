@@ -23,6 +23,11 @@ namespace AUD9001.ApplicationServices.Mappings
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
 
+            this.CreateMap<UpdateProcessRequest, AUD9001.DataAccess.Entities.Process>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
+
         } 
     }
 }

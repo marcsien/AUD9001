@@ -61,5 +61,13 @@ namespace AUD9001.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateProcess([FromQuery] UpdateProcessRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
