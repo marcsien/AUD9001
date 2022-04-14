@@ -1,7 +1,9 @@
 using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.API.Validators;
 using AUD9001.ApplicationServices.Mappings;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,9 @@ namespace AUD9001
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddProcessRequestValidator>());
+
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
