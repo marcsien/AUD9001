@@ -46,6 +46,11 @@ namespace AUD9001.Controllers
         [Route("")]
         public async Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
         {
+            if(!this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST_CUSTOM_TEXT");
+            }
+
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }

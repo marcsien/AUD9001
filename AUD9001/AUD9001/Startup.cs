@@ -38,6 +38,12 @@ namespace AUD9001
             services.AddMvcCore()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddProcessRequestValidator>());
 
+            //poni¿sze pozwala wejsc do kontrolera pomimo b³ednego requestu
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
