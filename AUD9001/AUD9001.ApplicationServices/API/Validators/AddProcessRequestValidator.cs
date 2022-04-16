@@ -12,7 +12,7 @@ namespace AUD9001.ApplicationServices.API.Validators
     {
         public AddProcessRequestValidator()
         {
-            this.RuleFor(x => x.Name).NotEmpty();
+            this.RuleFor(x => x.Name).NotEmpty().WithMessage("Name cannot be empty");
         }
     }
 }

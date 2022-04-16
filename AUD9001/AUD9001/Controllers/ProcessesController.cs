@@ -12,13 +12,10 @@ namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProcessesController : ControllerBase
+    public class ProcessesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public ProcessesController(IMediator mediator)
+        public ProcessesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
@@ -44,15 +41,9 @@ namespace AUD9001.Controllers
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
+        public Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
         {
-            if(!this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST_CUSTOM_TEXT");
-            }
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddProcessRequest, AddProcessResponse>(request);
         }
 
         [HttpDelete]
