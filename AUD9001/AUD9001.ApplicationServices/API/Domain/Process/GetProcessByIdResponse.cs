@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    class GetProcessByIdResponse : ResponseBase<Process>
+    public class GetProcessByIdResponse : ResponseBase<Process>
     {
     }
 }
