@@ -15,7 +15,8 @@ namespace AUD9001.ApplicationServices.Mappings
             this.CreateMap<AUD9001.DataAccess.Entities.Company, Company>()
                 .ForMember(x => x.Id,y => y.MapFrom(z => z.Id))
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
-                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description))
+                .ForMember(x => x.Processes, y => y.MapFrom(z => z.Processes != null ? z.Processes.Select(x => x.Name) : new List<string>()));
         }
     }
 }
