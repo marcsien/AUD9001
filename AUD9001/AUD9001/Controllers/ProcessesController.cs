@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
+using Microsoft.Extensions.Logging;
 
 namespace AUD9001.Controllers
 {
@@ -14,8 +15,9 @@ namespace AUD9001.Controllers
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase
     {
-        public ProcessesController(IMediator mediator) : base(mediator)
+        public ProcessesController(IMediator mediator, ILogger<ProcessesController> logger) : base(mediator)
         {
+            logger.LogInformation("We are in Processes Controller");
         }
 
         [HttpGet]
