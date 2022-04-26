@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AUD9001.ApplicationServices.Components.OpenWeather;
+using Microsoft.Extensions.Configuration;
 
 namespace AUD9001.Controllers
 {
@@ -17,10 +19,13 @@ namespace AUD9001.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IWeatherConnector _weatherConnector;
+        
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherConnector weatherConnector)
         {
             _logger = logger;
+            _weatherConnector = weatherConnector;
         }
 
         [HttpGet]
@@ -34,6 +39,14 @@ namespace AUD9001.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        [Route("weather/{city}")]
+        public async Task<IActionResult> GetWeather([FromRoute] string city)
+        {
+            var response = await this._weatherConnector.Fetch(city);
+            return this.Ok(response);
         }
     }
 }

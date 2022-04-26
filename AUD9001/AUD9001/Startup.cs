@@ -1,5 +1,6 @@
 using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.ApplicationServices.API.Validators;
+using AUD9001.ApplicationServices.Components.OpenWeather;
 using AUD9001.ApplicationServices.Mappings;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS;
@@ -46,6 +47,8 @@ namespace AUD9001
 
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<ICommandExecutor, CommandExecutor>();
+
+            services.AddTransient<IWeatherConnector, WeatherConnector>();
 
             services.AddAutoMapper(typeof(ProcessesProfile).Assembly);
 
