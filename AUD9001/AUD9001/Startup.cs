@@ -2,10 +2,12 @@ using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.ApplicationServices.API.Validators;
 using AUD9001.ApplicationServices.Components.OpenWeather;
 using AUD9001.ApplicationServices.Mappings;
+using AUD9001.Authentication;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +38,9 @@ namespace AUD9001
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
             services.AddMvcCore()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddProcessRequestValidator>());
 
@@ -80,6 +85,8 @@ namespace AUD9001
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

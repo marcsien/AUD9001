@@ -7,9 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase
