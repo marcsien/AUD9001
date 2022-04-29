@@ -18,16 +18,19 @@ namespace AUD9001.Authentication
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly IQueryExecutor queryExecutor;
+        private readonly IHasher hasher;
 
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            IQueryExecutor queryExecutor)
+            IQueryExecutor queryExecutor,
+            IHasher hasher)
             : base(options, logger, encoder, clock)
         {
             this.queryExecutor = queryExecutor;
+            this.hasher = hasher;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -58,8 +61,9 @@ namespace AUD9001.Authentication
                 };
                 user = await this.queryExecutor.Execute(query);
 
-                // TODO: HASH!
-                if (user == null || user.Password != password)
+                var passwordhashed = await hasher.GenerateHash(user.Salt, password);
+
+                if (user == null || user.Password != passwordhashed)
                 {
                     return AuthenticateResult.Fail("Invalid Authorization Header");
                 }

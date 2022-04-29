@@ -61,6 +61,8 @@ namespace AUD9001
 
             services.AddScoped(serviceType: typeof(IRepository<>), implementationType: typeof(Repository<>));
 
+            services.AddTransient<IHasher, Hasher>();
+
             services.AddDbContext<AUD9001StorageContext>(
                 opt =>
                 opt.UseSqlServer(this.Configuration.GetConnectionString("AUD9001DatabaseConnection")));

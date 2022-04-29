@@ -16,6 +16,8 @@ namespace AUD9001.DataAccess.Entities
         public string Login { get; set; }
         public string Password { get; set; } // plain password !! only for template purpose !!
         public string Email { get; set; }
+
+        public byte[] Salt { get; set; }
         public Role Role { get; set; }
         
         public Process Process { get; set; }
