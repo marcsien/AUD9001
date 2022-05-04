@@ -1,4 +1,5 @@
 using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.API.Hasher;
 using AUD9001.ApplicationServices.API.Validators;
 using AUD9001.ApplicationServices.Components.OpenWeather;
 using AUD9001.ApplicationServices.Mappings;

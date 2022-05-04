@@ -6,7 +6,7 @@ using System;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace AUD9001.Authentication
+namespace AUD9001.ApplicationServices.API.Hasher
 {
     public class Hasher : IHasher
     {

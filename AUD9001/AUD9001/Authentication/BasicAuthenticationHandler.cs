@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using AUD9001.ApplicationServices.API.Hasher;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess.Entities;

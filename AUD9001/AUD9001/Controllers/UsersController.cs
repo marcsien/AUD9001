@@ -30,5 +30,14 @@ namespace AUD9001.Controllers
             return this.Ok(response);
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddUser([FromQuery] AddUserRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
     }
 }
