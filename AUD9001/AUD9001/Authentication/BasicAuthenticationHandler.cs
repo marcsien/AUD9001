@@ -74,9 +74,17 @@ namespace AUD9001.Authentication
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
 
-            var claims = new[] {
+            Role role = null;
+            if(user is not null)
+            {
+                var rolequery = new GetRoleQuery() { Id = user.Role.Id };
+                role = await this.queryExecutor.Execute(rolequery);
+            }
+
+           var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Login),
+                new Claim(ClaimTypes.Role, role.Name)
             };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

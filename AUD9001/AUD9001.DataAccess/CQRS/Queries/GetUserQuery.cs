@@ -14,7 +14,9 @@ namespace AUD9001.DataAccess.CQRS.Queries
 
         public override Task<User> Execute(AUD9001StorageContext context)
         {
-            return context.Users.FirstOrDefaultAsync(x=>x.Login==this.Username);
+            return context.Users
+                .Include(x => x.Role)
+                .FirstOrDefaultAsync(x => x.Login == this.Username);
         }
     }
 }

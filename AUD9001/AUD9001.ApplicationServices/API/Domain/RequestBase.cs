@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetProcessByIdRequest : RequestBase<GetProcessByIdResponse>
+    public class RequestBase<T> : IRequest<T>
     {
-        public int ProcessId { get; set; }
+        public string userRole { get; set; }
     }
 }

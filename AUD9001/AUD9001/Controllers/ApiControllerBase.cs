@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace AUD9001.Controllers
@@ -20,7 +21,7 @@ namespace AUD9001.Controllers
         }
 
         protected async Task<IActionResult> HandleRequest<TRequest, TResponse>(TRequest request)
-            where TRequest : IRequest<TResponse>
+            where TRequest : RequestBase<TResponse>
             where TResponse : ErrorResponseBase
         {
             if (!this.ModelState.IsValid)
@@ -30,6 +31,10 @@ namespace AUD9001.Controllers
                     .Where(x => x.Value.Errors.Any())
                     .Select(y => new { property = y.Key, errors = y.Value.Errors }));
             }
+
+            request.userRole = this.User.FindFirstValue(ClaimTypes.Role);
+
+
             var response = await this.mediator.Send(request);
             if (response.Error != null)
             {
