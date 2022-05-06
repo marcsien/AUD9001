@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
+    [Authorize(Roles = "Manager")]
     [ApiController]
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase
