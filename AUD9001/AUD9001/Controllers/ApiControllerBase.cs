@@ -33,6 +33,7 @@ namespace AUD9001.Controllers
             }
 
             request.userRole = this.User.FindFirstValue(ClaimTypes.Role);
+            request.userLogin = this.User.FindFirstValue(ClaimTypes.Name);
 
 
             var response = await this.mediator.Send(request);

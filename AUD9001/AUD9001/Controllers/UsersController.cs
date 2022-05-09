@@ -8,18 +8,17 @@ using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
 using Microsoft.AspNetCore.Authorization;
+using AUD9001.ApplicationServices.API.Domain.User;
 
 namespace AUD9001.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-        public UsersController(IMediator mediator)
+        public UsersController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
@@ -37,6 +36,15 @@ namespace AUD9001.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpGet]
+        [Route("/Users/me/")]
+        public async Task<IActionResult> GetMeUser([FromQuery] GetUserMeRequest request)
+        {
+            
+            //var response = await this.mediator.Send(request);
+            return await this.HandleRequest<GetUserMeRequest, GetUserMeResponse>(request);
         }
 
     }

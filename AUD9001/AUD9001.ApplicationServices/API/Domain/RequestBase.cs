@@ -10,5 +10,6 @@ namespace AUD9001.ApplicationServices.API.Domain
     public class RequestBase<T> : IRequest<T>
     {
         public string userRole { get; set; }
+        public string userLogin { get; set; }
     }
 }

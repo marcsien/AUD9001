@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class AddUserResponse : ResponseBase<User>
+    public class AddUserResponse : ResponseBase<AUD9001.ApplicationServices.API.Domain.Models.User>
     {
     }
 }
