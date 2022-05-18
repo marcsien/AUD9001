@@ -39,12 +39,20 @@ namespace AUD9001.Controllers
         }
 
         [HttpGet]
-        [Route("/Users/me/")]
+        [Route("/users/me/")]
         public async Task<IActionResult> GetMeUser([FromQuery] GetUserMeRequest request)
         {
             
             //var response = await this.mediator.Send(request);
             return await this.HandleRequest<GetUserMeRequest, GetUserMeResponse>(request);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("/users/authenticate/")]
+        public async Task<IActionResult> PostAuthenticateUser([FromBody] ValidateUserRequest request)
+        {
+            return await this.HandleRequest<ValidateUserRequest, ValidateUserResponse>(request);
         }
 
     }
