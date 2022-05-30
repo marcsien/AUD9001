@@ -1,4 +1,6 @@
+using AUD9001.ApplicationServices.API.Hasher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
 
 namespace AUD9001.Tests
 {
@@ -6,15 +8,33 @@ namespace AUD9001.Tests
     public class HasherTests
     {
         [TestMethod]
-        public void GenerateHash_ProperParameters_ReturnsHash()
+        public async Task GenerateSalt_ProperParameters_ReturnsSalt()
         {
-            Assert.Inconclusive();
+            //Arrange
+            byte[] salt = null;
+            Hasher hasher = new Hasher();
+
+            //Act
+            salt = await hasher.GenerateSalt();
+
+            //Assert
+            Assert.IsNotNull(salt);
         }
 
         [TestMethod]
-        public void GenerateSalt_ProperParameters_ReturnsSalt()
+        public async Task GenerateHash_ProperParameters_ReturnsHash()
         {
-            Assert.Inconclusive();
+            //Arrange
+            Hasher hasher = new Hasher();
+            byte[] salt = await hasher.GenerateSalt();
+            string password = "testpassword";
+            string hash = null;
+
+            //Act
+            hash = await hasher.GenerateHash(salt, password);
+
+            //Assert
+            Assert.IsNotNull(hash);
         }
     }
 }
