@@ -36,5 +36,41 @@ namespace AUD9001.Tests
             //Assert
             Assert.IsNotNull(hash);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(System.ArgumentNullException))]
+        public async Task GenerateHash_EmptySalt_ThrowsException1()
+        {
+            //Arrange
+            Hasher hasher = new Hasher();
+            string password = "testpassword";
+            string hash = null;
+
+            //Act
+            hash = await hasher.GenerateHash(null, password);
+        }
+
+        [TestMethod]
+        public async Task GenerateHash_EmptySalt_ThrowsException2()
+        {
+            //Arrange
+            Hasher hasher = new Hasher();
+            string password = "testpassword";
+            string hash = null;
+
+            //Act
+            try
+            {
+                hash = await hasher.GenerateHash(null, password);
+            }
+            catch (System.ArgumentNullException)
+            {
+
+                return;
+            }
+
+            //Assert
+            Assert.Fail("ArgumentNullException was not thrown as expected");
+        }
     }
 }
