@@ -7,6 +7,9 @@ namespace AUD9001.Tests
     [TestClass]
     public class HasherTests
     {
+        public string test_password = "testpassword";
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         public async Task GenerateSalt_ProperParameters_ReturnsSalt()
         {
@@ -15,6 +18,7 @@ namespace AUD9001.Tests
             Hasher hasher = new Hasher();
 
             //Act
+            TestContext.WriteLine("Generating salt");
             salt = await hasher.GenerateSalt();
 
             //Assert
@@ -27,11 +31,11 @@ namespace AUD9001.Tests
             //Arrange
             Hasher hasher = new Hasher();
             byte[] salt = await hasher.GenerateSalt();
-            string password = "testpassword";
             string hash = null;
 
             //Act
-            hash = await hasher.GenerateHash(salt, password);
+            TestContext.WriteLine("Generating hash");
+            hash = await hasher.GenerateHash(salt, test_password);
 
             //Assert
             Assert.IsNotNull(hash);
@@ -43,11 +47,10 @@ namespace AUD9001.Tests
         {
             //Arrange
             Hasher hasher = new Hasher();
-            string password = "testpassword";
             string hash = null;
 
             //Act
-            hash = await hasher.GenerateHash(null, password);
+            hash = await hasher.GenerateHash(null, test_password);
         }
 
         [TestMethod]
@@ -55,13 +58,12 @@ namespace AUD9001.Tests
         {
             //Arrange
             Hasher hasher = new Hasher();
-            string password = "testpassword";
             string hash = null;
 
             //Act
             try
             {
-                hash = await hasher.GenerateHash(null, password);
+                hash = await hasher.GenerateHash(null, test_password);
             }
             catch (System.ArgumentNullException)
             {
