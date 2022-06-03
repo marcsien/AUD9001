@@ -11,12 +11,28 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AUD9001.ApplicationServices\AUD9001.ApplicationServices.csproj" />
     <ProjectReference Include="..\AUD9001.DataAccess\AUD9001.DataAccess.csproj" />
     <ProjectReference Include="..\AUD9001\AUD9001.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Testsettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Testsettings.runsettings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Testsettings.runsettings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Testsettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
