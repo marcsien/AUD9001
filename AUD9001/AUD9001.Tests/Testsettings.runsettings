@@ -3,5 +3,7 @@
   <TestRunParameters>
     <Parameter name="password" 
                value="testpassword"/>
+    <Parameter name="GoodFileName" 
+               value="[AppPath]\TestFile.txt"/>
   </TestRunParameters>
 </RunSettings>

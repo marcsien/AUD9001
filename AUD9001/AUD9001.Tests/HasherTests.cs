@@ -1,5 +1,6 @@
 using AUD9001.ApplicationServices.API.Hasher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Threading.Tasks;
 
 namespace AUD9001.Tests
@@ -11,6 +12,8 @@ namespace AUD9001.Tests
 
         public TestContext TestContext { get; set; }
 
+        private string _GoodFileName;
+
         
 
         [TestMethod]
@@ -19,6 +22,7 @@ namespace AUD9001.Tests
             //Arrange
             byte[] salt = null;
             Hasher hasher = new Hasher();
+            SetGoodFileName();
 
             //Act
             TestContext.WriteLine("Generating salt");
@@ -85,5 +89,17 @@ namespace AUD9001.Tests
             //Assert
             Assert.Fail("ArgumentNullException was not thrown as expected");
         }
+
+        private void SetGoodFileName()
+        {
+            _GoodFileName = TestContext.Properties["GoodFileName"].ToString();
+            if(_GoodFileName.Contains("[AppPath]"))
+            {
+                _GoodFileName = _GoodFileName.Replace("AppPath",
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            }
+        }
+
+
     }
 }
