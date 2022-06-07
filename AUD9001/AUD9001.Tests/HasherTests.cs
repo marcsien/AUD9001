@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 namespace AUD9001.Tests
 {
     [TestClass]
-    public class HasherTests
+    public class HasherTests : TestBase
     {
         public string test_password { get; set; }
-
-        public TestContext TestContext { get; set; }
-
-        private string _GoodFileName;
-
-        
 
         [TestMethod]
         public async Task GenerateSalt_ProperParameters_ReturnsSalt()
@@ -88,16 +82,6 @@ namespace AUD9001.Tests
 
             //Assert
             Assert.Fail("ArgumentNullException was not thrown as expected");
-        }
-
-        private void SetGoodFileName()
-        {
-            _GoodFileName = TestContext.Properties["GoodFileName"].ToString();
-            if(_GoodFileName.Contains("[AppPath]"))
-            {
-                _GoodFileName = _GoodFileName.Replace("AppPath",
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-            }
         }
 
 
