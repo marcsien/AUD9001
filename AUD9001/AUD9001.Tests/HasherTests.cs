@@ -11,6 +11,9 @@ namespace AUD9001.Tests
         public string test_password { get; set; }
 
         [TestMethod]
+        [Owner("marcsien")]
+        [Priority(1)]
+        [TestCategory("HasherTests")]
         public async Task GenerateSalt_ProperParameters_ReturnsSalt()
         {
             //Arrange
@@ -29,6 +32,9 @@ namespace AUD9001.Tests
         }
 
         [TestMethod]
+        [Owner("marcsien")]
+        [Priority(1)]
+        [TestCategory("HasherTests")]
         public async Task GenerateHash_ProperParameters_ReturnsHash()
         {
             //Arrange
@@ -47,6 +53,9 @@ namespace AUD9001.Tests
         }
 
         [TestMethod]
+        [Owner("marcsien")]
+        [Priority(1)]
+        [TestCategory("HasherTests")]
         [ExpectedException(typeof(System.ArgumentNullException))]
         public async Task GenerateHash_EmptySalt_ThrowsException1()
         {
@@ -61,6 +70,9 @@ namespace AUD9001.Tests
         }
 
         [TestMethod]
+        [Owner("marcsien")]
+        [Priority(1)]
+        [TestCategory("HasherTests")]
         public async Task GenerateHash_EmptySalt_ThrowsException2()
         {
             //Arrange
