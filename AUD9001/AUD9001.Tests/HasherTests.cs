@@ -96,6 +96,32 @@ namespace AUD9001.Tests
             Assert.Fail("ArgumentNullException was not thrown as expected");
         }
 
+        [TestMethod]
+        [Owner("marcsien")]
+        [Priority(1)]
+        [TestCategory("HasherTests")]
+        [DataRow("password1")]
+        [DataRow("password2")]
+        [DataRow("pasfword8")]
+        [DataRow("passwgrd3")]
+        [DataRow("pashword5")]
+        public async Task GenerateHash_ProperParametersWithMultipleRows_ReturnsHash(string pass)
+        {
+            //Arrange
+            Hasher hasher = new Hasher();
+            byte[] salt = await hasher.GenerateSalt();
+            string hash = null;
+
+            //Act
+            TestContext.WriteLine("Generating hash");
+            test_password = pass;
+            TestContext.WriteLine($"Using password: {test_password}");
+            hash = await hasher.GenerateHash(salt, test_password);
+
+            //Assert
+            Assert.IsNotNull(hash);
+        }
+
 
     }
 }
