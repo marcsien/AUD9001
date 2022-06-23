@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetOutputsResponse : ResponseBase<List<AUD9001.ApplicationServices.API.Domain.Models.Output>>
+    public class GetOutputByIdResponse : ResponseBase<AUD9001.ApplicationServices.API.Domain.Models.Output>
     {
     }
 }

@@ -7,18 +7,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
+using Microsoft.Extensions.Logging;
+using AUD9001.ApplicationServices.API.Domain.Output;
 
 namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class OutputsController : ControllerBase
+    public class OutputsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public OutputsController(IMediator mediator)
+        public OutputsController(IMediator mediator, ILogger<OutputsController> logger) : base(mediator)
         {
-            this.mediator = mediator;
+            logger.LogInformation("We are in Processes Controller");
         }
 
         [HttpGet]
@@ -27,6 +27,17 @@ namespace AUD9001.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpGet]
+        [Route("{outputId}")]
+        public Task<IActionResult> GetOutputById([FromRoute] int outputId)
+        {
+            var request = new GetOutputByIdRequest
+            {
+                OutputId = outputId
+            };
+            return this.HandleRequest<GetOutputByIdRequest, GetOutputByIdResponse>(request);
         }
     }
 }
