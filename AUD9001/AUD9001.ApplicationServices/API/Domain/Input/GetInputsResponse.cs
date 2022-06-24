@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetInputsResponse : ResponseBase<List<Input>>
+    public class GetInputsResponse : ResponseBase<List<AUD9001.ApplicationServices.API.Domain.Models.Input>>
     {
     }
 }

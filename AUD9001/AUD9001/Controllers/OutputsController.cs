@@ -18,7 +18,7 @@ namespace AUD9001.Controllers
     {
         public OutputsController(IMediator mediator, ILogger<OutputsController> logger) : base(mediator)
         {
-            logger.LogInformation("We are in Processes Controller");
+            logger.LogInformation("We are in Output Controller");
         }
 
         [HttpGet]
