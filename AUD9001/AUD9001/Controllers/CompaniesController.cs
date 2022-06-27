@@ -7,17 +7,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
+using Microsoft.Extensions.Logging;
+using AUD9001.ApplicationServices.API.Domain.Company;
 
 namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CompaniesController : ControllerBase
+    public class CompaniesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-        public CompaniesController(IMediator mediator)
+        public CompaniesController(IMediator mediator, ILogger<CompaniesController> logger) : base(mediator)
         {
-            this.mediator = mediator;
+            logger.LogInformation("We are in Input Controller");
         }
 
         [HttpGet]
@@ -26,6 +27,17 @@ namespace AUD9001.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpGet]
+        [Route("{companyId}")]
+        public Task<IActionResult> GetCompanyById([FromRoute] int companyId)
+        {
+            var request = new GetCompanyByIdRequest
+            {
+                CompanyId = companyId
+            };
+            return this.HandleRequest<GetCompanyByIdRequest, GetCompanyByIdResponse>(request);
         }
 
     }

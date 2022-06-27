@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetCompaniesResponse : ResponseBase<List<Company>>
+    public class GetCompaniesResponse : ResponseBase<List<AUD9001.ApplicationServices.API.Domain.Models.Company>>
     {
     }
 }
