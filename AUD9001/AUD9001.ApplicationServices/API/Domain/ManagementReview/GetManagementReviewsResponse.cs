@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetManagementReviewsResponse : ResponseBase<List<ManagementReview>>
+    public class GetManagementReviewsResponse : ResponseBase<List<AUD9001.ApplicationServices.API.Domain.Models.ManagementReview>>
     {
     }
 }
