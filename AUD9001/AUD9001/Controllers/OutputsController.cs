@@ -39,5 +39,12 @@ namespace AUD9001.Controllers
             };
             return this.HandleRequest<GetOutputByIdRequest, GetOutputByIdResponse>(request);
         }
+
+        [HttpPost]
+        [Route("")]
+        public Task<IActionResult> AddProcess([FromBody] AddOutputRequest request)
+        {
+            return this.HandleRequest<AddOutputRequest, AddOutputResponse>(request);
+        }
     }
 }

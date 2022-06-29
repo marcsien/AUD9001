@@ -1,4 +1,5 @@
 ﻿using AUD9001.ApplicationServices.API.Domain.Models;
+using AUD9001.ApplicationServices.API.Domain.Output;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ namespace AUD9001.ApplicationServices.Mappings
         public OutputProfile()
         {
             this.CreateMap<AUD9001.DataAccess.Entities.Output, Output>()
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
+
+            this.CreateMap<AddOutputRequest, AUD9001.DataAccess.Entities.Output>()
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
         }
