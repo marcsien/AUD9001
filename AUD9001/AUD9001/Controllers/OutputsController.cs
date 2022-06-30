@@ -42,7 +42,7 @@ namespace AUD9001.Controllers
 
         [HttpPost]
         [Route("")]
-        public Task<IActionResult> AddProcess([FromBody] AddOutputRequest request)
+        public Task<IActionResult> AddOutput([FromBody] AddOutputRequest request)
         {
             return this.HandleRequest<AddOutputRequest, AddOutputResponse>(request);
         }

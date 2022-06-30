@@ -39,5 +39,12 @@ namespace AUD9001.Controllers
             };
             return this.HandleRequest<GetInputByIdRequest, GetInputByIdResponse>(request);
         }
+
+        [HttpPost]
+        [Route("")]
+        public Task<IActionResult> AddInput([FromBody] AddInputRequest request)
+        {
+            return this.HandleRequest<AddInputRequest, AddInputResponse>(request);
+        }
     }
 }
