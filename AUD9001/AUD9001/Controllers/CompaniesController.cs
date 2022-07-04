@@ -40,5 +40,12 @@ namespace AUD9001.Controllers
             return this.HandleRequest<GetCompanyByIdRequest, GetCompanyByIdResponse>(request);
         }
 
+        [HttpPost]
+        [Route("")]
+        public Task<IActionResult> AddProcess([FromBody] AddCompanyRequest request)
+        {
+            return this.HandleRequest<AddCompanyRequest, AddCompanyResponse>(request);
+        }
+
     }
 }

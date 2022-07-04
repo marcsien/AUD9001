@@ -1,4 +1,5 @@
-﻿using AUD9001.ApplicationServices.API.Domain.Models;
+﻿using AUD9001.ApplicationServices.API.Domain.Company;
+using AUD9001.ApplicationServices.API.Domain.Models;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,10 @@ namespace AUD9001.ApplicationServices.Mappings
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description))
                 .ForMember(x => x.Processes, y => y.MapFrom(z => z.Processes != null ? z.Processes.Select(x => x.Name) : new List<string>()));
+
+            this.CreateMap<AddCompanyRequest, AUD9001.DataAccess.Entities.Company>()
+                .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
         }
     }
 }

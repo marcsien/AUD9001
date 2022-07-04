@@ -14,8 +14,6 @@ namespace AUD9001.DataAccess.Entities
         public string Name { get; set; }
         [MaxLength(100)]
         public string Description { get; set; }
-
-        [Required]
         public string Address{ get; set; }
         public string Owner { get; set; }
         public List<Process> Processes { get; set; }
