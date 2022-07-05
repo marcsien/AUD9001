@@ -39,5 +39,12 @@ namespace AUD9001.Controllers
             };
             return this.HandleRequest<GetManagementReviewByIdRequest, GetManagementReviewByIdResponse>(request);
         }
+
+        [HttpPost]
+        [Route("")]
+        public Task<IActionResult> AddManagementReview([FromBody] AddManagementReviewRequest request)
+        {
+            return this.HandleRequest<AddManagementReviewRequest, AddManagementReviewResponse>(request);
+        }
     }
 }

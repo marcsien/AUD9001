@@ -1,4 +1,5 @@
-﻿using AUD9001.ApplicationServices.API.Domain.Models;
+﻿using AUD9001.ApplicationServices.API.Domain.ManagementReview;
+using AUD9001.ApplicationServices.API.Domain.Models;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,9 @@ namespace AUD9001.ApplicationServices.Mappings
             this.CreateMap<AUD9001.DataAccess.Entities.ManagementReview, ManagementReview>()
                 .ForMember(x => x.Number, y => y.MapFrom(z => z.Number))
                 .ForMember(x => x.Date, y => y.MapFrom(z => z.Date));
+
+            this.CreateMap<AddManagementReviewRequest, AUD9001.DataAccess.Entities.ManagementReview>()
+                .ForMember(x => x.Number, y => y.MapFrom(z => z.Number));
         }
     }
 }
