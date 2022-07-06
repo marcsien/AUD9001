@@ -30,7 +30,7 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var query = new GetUserQuery()
             {
-                Username = request.userLogin
+                Username = request.Login
             };
             var user = await this.queryexecutor.Execute(query);
 

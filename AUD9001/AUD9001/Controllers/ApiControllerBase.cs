@@ -32,8 +32,8 @@ namespace AUD9001.Controllers
                     .Select(y => new { property = y.Key, errors = y.Value.Errors }));
             }
 
-            request.userRole = this.User.FindFirstValue(ClaimTypes.Role);
-            request.userLogin = this.User.FindFirstValue(ClaimTypes.Name);
+            //request.userRole = this.User.FindFirstValue(ClaimTypes.Role);
+            //request.userLogin = this.User.FindFirstValue(ClaimTypes.Name);
 
 
             var response = await this.mediator.Send(request);
