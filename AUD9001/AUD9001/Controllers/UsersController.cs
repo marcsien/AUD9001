@@ -9,6 +9,8 @@ using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
 using Microsoft.AspNetCore.Authorization;
 using AUD9001.ApplicationServices.API.Domain.User;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace AUD9001.Controllers
 {
@@ -40,11 +42,20 @@ namespace AUD9001.Controllers
 
         [HttpGet]
         [Route("/users/me/")]
-        public async Task<IActionResult> GetMeUser([FromQuery] GetUserMeRequest request)
+        public async Task<IActionResult> GetMeUser()
         {
-            
-            //var response = await this.mediator.Send(request);
-            return await this.HandleRequest<GetUserMeRequest, GetUserMeResponse>(request);
+            GetUserMeRequest request = new GetUserMeRequest();
+
+            if (Request.Headers.ContainsKey("Authorization"))
+            {
+                var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
+                var credentialBytes = Convert.FromBase64String(authHeader.Parameter);
+                var credentials = Encoding.UTF8.GetString(credentialBytes).Split(new[] { ':' }, 2);
+                request.Login = credentials[0];
+            }
+
+                //var response = await this.mediator.Send(request);
+                return await this.HandleRequest<GetUserMeRequest, GetUserMeResponse>(request);
         }
 
         [AllowAnonymous]
