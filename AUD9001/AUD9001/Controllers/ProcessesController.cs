@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase
@@ -43,7 +43,7 @@ namespace AUD9001.Controllers
             return this.HandleRequest<GetProcessByIdRequest, GetProcessByIdResponse>(request);
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
         [Route("")]
         public Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)

@@ -4,6 +4,7 @@ using AUD9001.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AUD9001.DataAccess.Migrations
 {
     [DbContext(typeof(AUD9001StorageContext))]
-    partial class AUD9001StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20220708062308_CompanyRequiredInProcessTable")]
+    partial class CompanyRequiredInProcessTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

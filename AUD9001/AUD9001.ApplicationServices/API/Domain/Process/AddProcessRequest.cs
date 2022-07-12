@@ -11,5 +11,6 @@ namespace AUD9001.ApplicationServices.API.Domain
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int CompanyID { get; set; }
     }
 }
