@@ -15,11 +15,18 @@ namespace AUD9001.DataAccess.CQRS.Queries
         {
             if(String.IsNullOrEmpty(this.Name))
             {
-                return context.Processes.ToListAsync();
+                var processes = context.Processes
+                                        .Include(p => p.Company)
+                                        .ToListAsync();
+                return processes;
             }
             else
             {
-                return context.Processes.Where(x => x.Name == this.Name).ToListAsync();
+                var processes = context.Processes
+                                        .Where(x => x.Name == this.Name)
+                                        .Include(p => p.Company)
+                                        .ToListAsync();
+                return processes;
             }           
         }
     }

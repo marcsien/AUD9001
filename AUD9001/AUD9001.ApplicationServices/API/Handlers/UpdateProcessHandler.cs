@@ -30,16 +30,17 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateProcessResponse> Handle(UpdateProcessRequest request, CancellationToken cancellationToken)
         {
-            //var query = new GetProcessQuery()
-            //{
-            //    Id = request.Id
-            //};
-            //var process = await this.queryExecutor.Execute(query);
-
             var command = new UpdateProcessCommand()
             {
                 Parameter = mapper.Map<Process>(request)
             };
+
+            if (request.CompanyID != null)
+            {
+                var companycommand = new GetCompanyQuery() { Id = (int)request.CompanyID };
+                var company = await this.queryExecutor.Execute(companycommand);
+                command.Parameter.Company = company;
+            }
 
             var updatedprocess = await this.commandExecutor.Execute(command);
 

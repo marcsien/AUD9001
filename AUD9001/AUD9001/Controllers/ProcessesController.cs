@@ -43,7 +43,6 @@ namespace AUD9001.Controllers
             return this.HandleRequest<GetProcessByIdRequest, GetProcessByIdResponse>(request);
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("")]
         public Task<IActionResult> AddProcess([FromBody] AddProcessRequest request)
