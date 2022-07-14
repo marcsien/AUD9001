@@ -13,7 +13,9 @@ namespace AUD9001.DataAccess.CQRS.Queries
         public int Id { get; set; }
         public override async Task<Input> Execute(AUD9001StorageContext context)
         {
-            var input = await context.Inputs.FirstOrDefaultAsync(x => x.Id == this.Id);
+            var input = await context.Inputs.
+                                            Include(p => p.Process).
+                                            FirstOrDefaultAsync(x => x.Id == this.Id);
             return input;
         }
     }

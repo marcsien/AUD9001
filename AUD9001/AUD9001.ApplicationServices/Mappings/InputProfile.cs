@@ -13,9 +13,10 @@ namespace AUD9001.ApplicationServices.Mappings
     {
         public InputProfile()
         {
-            this.CreateMap<AUD9001.DataAccess.Entities.Input,Input>()
+            this.CreateMap<AUD9001.DataAccess.Entities.Input, Input>()
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
-                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description))
+                .ForMember(x => x.ProcessID, y => y.MapFrom(z => z.Process.Id));
 
             this.CreateMap<AddInputRequest, AUD9001.DataAccess.Entities.Input>()
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
