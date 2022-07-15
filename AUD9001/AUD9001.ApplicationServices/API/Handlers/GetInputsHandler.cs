@@ -1,5 +1,6 @@
 ﻿using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.DataAccess;
+using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess.Entities;
 using AutoMapper;
 using MediatR;
@@ -16,16 +17,20 @@ namespace AUD9001.ApplicationServices.API.Handlers
     {
         private readonly IRepository<Input> inputRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryexecutor;
 
-        public GetInputsHandler(IRepository<DataAccess.Entities.Input> inputRepository,IMapper mapper)
+        public GetInputsHandler(IRepository<DataAccess.Entities.Input> inputRepository,IMapper mapper, IQueryExecutor queryexecutor)
         {
             this.inputRepository = inputRepository;
             this.mapper = mapper;
+            this.queryexecutor = queryexecutor;
         }
 
         public async Task<GetInputsResponse> Handle(GetInputsRequest request, CancellationToken cancellationToken)
         {
-            var mappedInputs = this.mapper.Map<List<Domain.Models.Input>>(await this.inputRepository.GetAll());
+            var query = new GetInputsQuery(){};
+            var inputs = await this.queryexecutor.Execute(query);
+            var mappedInputs = this.mapper.Map<List<Domain.Models.Input>>(inputs);
             var response = new GetInputsResponse() { Data = mappedInputs };
             return response;
         }

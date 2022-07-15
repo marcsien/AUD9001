@@ -23,10 +23,11 @@ namespace AUD9001.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllInputs([FromQuery] GetInputsRequest request)
+        public Task<IActionResult> GetAllInputs([FromQuery] GetInputsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
+            return this.HandleRequest<GetInputsRequest, GetInputsResponse>(request);
         }
 
         [HttpGet]
