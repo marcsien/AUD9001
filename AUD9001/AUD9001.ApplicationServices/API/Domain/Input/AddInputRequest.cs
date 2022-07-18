@@ -10,5 +10,6 @@ namespace AUD9001.ApplicationServices.API.Domain.Input
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int ProcessID { get; set; }
     }
 }

@@ -9,9 +9,11 @@ using MediatR;
 using AUD9001.ApplicationServices.API.Domain;
 using Microsoft.Extensions.Logging;
 using AUD9001.ApplicationServices.API.Domain.Input;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
+    [Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class InputsController : ApiControllerBase
