@@ -25,8 +25,7 @@ namespace AUD9001.Controllers
         [Route("")]
         public async Task<IActionResult> GetAllOutputs([FromQuery] GetOutputsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return  await this.HandleRequest<GetOutputsRequest, GetOutputsResponse>(request);
         }
 
         [HttpGet]

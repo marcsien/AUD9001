@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetOutputsRequest : IRequest<GetOutputsResponse>
+    public class GetOutputsRequest : RequestBase<GetOutputsResponse>
     {
     }
 }
