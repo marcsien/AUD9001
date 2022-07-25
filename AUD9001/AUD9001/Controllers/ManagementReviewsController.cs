@@ -25,8 +25,7 @@ namespace AUD9001.Controllers
         [Route("")]
         public async Task<IActionResult> GetAllManagementReviews([FromQuery] GetManagementReviewsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return await this.HandleRequest<GetManagementReviewsRequest, GetManagementReviewsResponse>(request);
         }
 
         [HttpGet]

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class GetManagementReviewsRequest : IRequest<GetManagementReviewsResponse>
+    public class GetManagementReviewsRequest : RequestBase<GetManagementReviewsResponse>
     {
     }
 }
