@@ -13,7 +13,9 @@ namespace AUD9001.DataAccess.CQRS.Queries
         public int Id { get; set; }
         public override async Task<ManagementReview> Execute(AUD9001StorageContext context)
         {
-            var managementReview = await context.ManagementReviews.FirstOrDefaultAsync(x => x.Id == this.Id);
+            var managementReview = await context.ManagementReviews
+                .Include(x => x.Company)
+                .FirstOrDefaultAsync(x => x.Id == this.Id);
             return managementReview;
         }
     }
