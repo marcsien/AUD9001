@@ -27,8 +27,6 @@ namespace AUD9001.Controllers
         [Route("")]
         public Task<IActionResult> GetAllInputs([FromQuery] GetInputsRequest request)
         {
-            //var response = await this.mediator.Send(request);
-            //return this.Ok(response);
             return this.HandleRequest<GetInputsRequest, GetInputsResponse>(request);
         }
 
