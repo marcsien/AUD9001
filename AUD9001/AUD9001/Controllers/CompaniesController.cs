@@ -47,5 +47,12 @@ namespace AUD9001.Controllers
             return this.HandleRequest<AddCompanyRequest, AddCompanyResponse>(request);
         }
 
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateCompany([FromQuery] UpdateCompanyRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

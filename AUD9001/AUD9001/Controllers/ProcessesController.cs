@@ -38,8 +38,6 @@ namespace AUD9001.Controllers
             {
                 ProcessId = processId
             };
-            //var response = await this.mediator.Send(request);
-            //return this.Ok(response);
             return this.HandleRequest<GetProcessByIdRequest, GetProcessByIdResponse>(request);
         }
 
