@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
-    [Authorize(Roles = "Manager, Administrator")]
+    //[Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class InputsController : ApiControllerBase
@@ -46,6 +46,14 @@ namespace AUD9001.Controllers
         public Task<IActionResult> AddInput([FromBody] AddInputRequest request)
         {
             return this.HandleRequest<AddInputRequest, AddInputResponse>(request);
+        }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateInput([FromQuery] UpdateInputRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
         }
     }
 }
