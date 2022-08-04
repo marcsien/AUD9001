@@ -45,5 +45,13 @@ namespace AUD9001.Controllers
         {
             return this.HandleRequest<AddOutputRequest, AddOutputResponse>(request);
         }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateOutput([FromQuery] UpdateOutputRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
