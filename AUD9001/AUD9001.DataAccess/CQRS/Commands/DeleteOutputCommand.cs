@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AUD9001.DataAccess.Entities;
+
+namespace AUD9001.DataAccess.CQRS.Commands
+{
+    public class DeleteOutputCommand : CommandBase<Output, Output>
+    {
+        public async override Task<Output> Execute(AUD9001StorageContext context)
+        {
+            context.Outputs.Remove(this.Parameter);
+            await context.SaveChangesAsync();
+            return this.Parameter;
+        }
+    }
+}

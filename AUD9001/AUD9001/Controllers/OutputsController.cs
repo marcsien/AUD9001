@@ -53,5 +53,17 @@ namespace AUD9001.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpDelete]
+        [Route("{outputId}")]
+        public async Task<IActionResult> DeleteOutput([FromRoute] int outputId)
+        {
+            var request = new DeleteOutputByIdRequest
+            {
+                OutputId = outputId
+            };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
