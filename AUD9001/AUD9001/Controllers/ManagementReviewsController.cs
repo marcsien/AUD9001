@@ -45,5 +45,13 @@ namespace AUD9001.Controllers
         {
             return this.HandleRequest<AddManagementReviewRequest, AddManagementReviewResponse>(request);
         }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateManagementReview([FromQuery] UpdateManagementReviewRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

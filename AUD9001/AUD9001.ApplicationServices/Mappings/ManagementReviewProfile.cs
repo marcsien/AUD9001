@@ -20,6 +20,11 @@ namespace AUD9001.ApplicationServices.Mappings
 
             this.CreateMap<AddManagementReviewRequest, AUD9001.DataAccess.Entities.ManagementReview>()
                 .ForMember(x => x.Number, y => y.MapFrom(z => z.Number));
+
+            this.CreateMap<UpdateManagementReviewRequest, AUD9001.DataAccess.Entities.ManagementReview>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+                .ForMember(x => x.Number, y => y.MapFrom(z => z.Number))
+                .ForMember(x => x.Date, y => y.MapFrom(z => z.Date));
         }
     }
 }
