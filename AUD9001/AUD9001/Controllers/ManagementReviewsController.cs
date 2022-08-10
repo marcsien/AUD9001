@@ -53,5 +53,17 @@ namespace AUD9001.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpDelete]
+        [Route("{managementReviewId}")]
+        public async Task<IActionResult> DeleteManagementReview([FromRoute] int managementReviewId)
+        {
+            var request = new DeleteManagementReviewByIdRequest
+            {
+                ManagementReviewId = managementReviewId
+            };
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
