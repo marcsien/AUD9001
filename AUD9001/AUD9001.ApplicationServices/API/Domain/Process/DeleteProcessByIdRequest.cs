@@ -7,7 +7,7 @@ using MediatR;
 
 namespace AUD9001.ApplicationServices.API.Domain
 {
-    public class DeleteProcessByIdRequest : IRequest<DeleteProcessByIdResponse>
+    public class DeleteProcessByIdRequest : RequestBase<DeleteProcessByIdResponse>
     {
         public int ProcessId { get; set; }
     }

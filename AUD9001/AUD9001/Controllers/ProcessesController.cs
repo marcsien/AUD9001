@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
-    [Authorize(Roles = "Manager, Administrator")]
+    //[Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase
@@ -49,15 +49,10 @@ namespace AUD9001.Controllers
         }
 
         [HttpDelete]
-        [Route("{processId}")]
-        public async Task<IActionResult> DeleteProcess([FromRoute] int processId)
+        [Route("")]
+        public Task<IActionResult> DeleteProcess([FromBody]DeleteProcessByIdRequest request)
         {
-            var request = new DeleteProcessByIdRequest
-            {
-                ProcessId = processId
-            };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteProcessByIdRequest, DeleteProcessByIdResponse>(request);
         }
 
         [HttpPut]
