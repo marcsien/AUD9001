@@ -57,10 +57,10 @@ namespace AUD9001.Controllers
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> UpdateProcess([FromQuery] UpdateProcessRequest request)
+        public Task<IActionResult> UpdateProcess([FromQuery] UpdateProcessRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            return this.HandleRequest<UpdateProcessRequest, UpdateProcessResponse>(request);//this.Ok(response);
         }
     }
 }
