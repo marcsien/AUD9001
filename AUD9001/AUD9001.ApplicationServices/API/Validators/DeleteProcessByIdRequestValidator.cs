@@ -14,7 +14,6 @@ namespace AUD9001.ApplicationServices.API.Validators
         {
             this.RuleFor(x => x.ProcessId).NotEmpty().WithMessage("Name cannot be empty");
             this.RuleFor(x => x.ProcessId).NotEqual(0).WithMessage("CompanyID cannot equal 0");
-            this.RuleFor(x => x.ProcessId).NotEqual(21).WithMessage("CompanyID cannot equal 21");
         }
     }
 }

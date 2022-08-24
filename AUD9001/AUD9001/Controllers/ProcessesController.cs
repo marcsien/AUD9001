@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
-    //[Authorize(Roles = "Manager, Administrator")]
+    [Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase
@@ -24,10 +24,9 @@ namespace AUD9001.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllProcesses([FromQuery] GetProcessesRequest request)
+        public Task<IActionResult> GetAllProcesses([FromQuery] GetProcessesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetProcessesRequest, GetProcessesResponse>(request);
         }
 
         [HttpGet]
@@ -59,8 +58,7 @@ namespace AUD9001.Controllers
         [Route("")]
         public Task<IActionResult> UpdateProcess([FromQuery] UpdateProcessRequest request)
         {
-            //var response = await this.mediator.Send(request);
-            return this.HandleRequest<UpdateProcessRequest, UpdateProcessResponse>(request);//this.Ok(response);
+            return this.HandleRequest<UpdateProcessRequest, UpdateProcessResponse>(request);
         }
     }
 }
