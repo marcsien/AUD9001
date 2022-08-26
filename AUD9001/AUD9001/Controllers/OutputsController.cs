@@ -55,15 +55,10 @@ namespace AUD9001.Controllers
         }
 
         [HttpDelete]
-        [Route("{outputId}")]
-        public async Task<IActionResult> DeleteOutput([FromRoute] int outputId)
+        [Route("")]
+        public Task<IActionResult> DeleteOutput([FromBody] DeleteOutputByIdRequest request)
         {
-            var request = new DeleteOutputByIdRequest
-            {
-                OutputId = outputId
-            };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteOutputByIdRequest, DeleteOutputByIdResponse>(request);
         }
     }
 }

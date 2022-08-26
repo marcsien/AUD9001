@@ -12,8 +12,8 @@ namespace AUD9001.ApplicationServices.API.Validators
     {
         public DeleteProcessByIdRequestValidator()
         {
-            this.RuleFor(x => x.ProcessId).NotEmpty().WithMessage("Name cannot be empty");
-            this.RuleFor(x => x.ProcessId).NotEqual(0).WithMessage("CompanyID cannot equal 0");
+            this.RuleFor(x => x.ProcessId).NotEmpty().WithMessage("ProcessId cannot be empty");
+            this.RuleFor(x => x.ProcessId).NotEqual(0).WithMessage("ProcessId cannot equal 0");
         }
     }
 }
