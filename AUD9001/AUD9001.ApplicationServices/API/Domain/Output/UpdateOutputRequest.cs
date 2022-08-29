@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.Output
 {
-    public class UpdateOutputRequest : IRequest<UpdateOutputResponse>
+    public class UpdateOutputRequest : RequestBase<UpdateOutputResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }
