@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.Input
 {
-    public class DeleteInputByIdRequest : IRequest<DeleteInputByIdResponse>
+    public class DeleteInputByIdRequest : RequestBase<DeleteInputByIdResponse>
     {
         public int InputId { get; set; }
     }
