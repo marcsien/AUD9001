@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.Input
 {
-    public class UpdateInputRequest : IRequest<UpdateInputResponse>
+    public class UpdateInputRequest : RequestBase<UpdateInputResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }

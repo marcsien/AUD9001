@@ -49,11 +49,10 @@ namespace AUD9001.Controllers
         }
 
         [HttpPut]
-        [Route("")]
-        public async Task<IActionResult> UpdateInput([FromQuery] UpdateInputRequest request)
+        public Task<IActionResult> UpdateInput([FromBody] UpdateInputRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+
+            return this.HandleRequest<UpdateInputRequest, UpdateInputResponse>(request);
         }
 
         [HttpDelete]
