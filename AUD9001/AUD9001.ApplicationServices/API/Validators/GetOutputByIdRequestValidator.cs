@@ -13,8 +13,8 @@ namespace AUD9001.ApplicationServices.API.Validators
     {
         public GetOutputByIdRequestValidator()
         {
-            this.RuleFor(x => x.OutputId).NotEmpty().WithMessage("ProcessId cannot be empty");
-            this.RuleFor(x => x.OutputId).NotEqual(0).WithMessage("ProcessId cannot equal 0");
+            this.RuleFor(x => x.OutputId).NotEmpty().WithMessage("OutputId cannot be empty");
+            this.RuleFor(x => x.OutputId).NotEqual(0).WithMessage("OutputId cannot equal 0");
         }
     }
 }
