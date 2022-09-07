@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.Company
 {
-    public class UpdateCompanyRequest : IRequest<UpdateCompanyResponse>
+    public class UpdateCompanyRequest : RequestBase<UpdateCompanyResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }

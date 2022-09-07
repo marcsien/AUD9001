@@ -1,14 +1,9 @@
-﻿using AUD9001.DataAccess.Entities;
-using AUD9001.DataAccess;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
-using AUD9001.ApplicationServices.API.Domain;
-using Microsoft.Extensions.Logging;
+﻿using AUD9001.ApplicationServices.API.Domain;
 using AUD9001.ApplicationServices.API.Domain.Company;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace AUD9001.Controllers
 {
@@ -49,14 +44,14 @@ namespace AUD9001.Controllers
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> UpdateCompany([FromQuery] UpdateCompanyRequest request)
+        public Task<IActionResult> UpdateCompany([FromQuery] UpdateCompanyRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<UpdateCompanyRequest, UpdateCompanyResponse>(request);
         }
 
         [HttpDelete]
-        public Task<IActionResult> DeleteProcess([FromBody] DeleteCompanyByIdRequest request)
+        [Route("")]
+        public Task<IActionResult> DeleteProcess([FromQuery] DeleteCompanyByIdRequest request)
         {
             return this.HandleRequest<DeleteCompanyByIdRequest, DeleteCompanyByIdResponse>(request);
         }
