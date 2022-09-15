@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.ManagementReview
 {
-    public class UpdateManagementReviewRequest : IRequest<UpdateManagementReviewResponse>
+    public class UpdateManagementReviewRequest : RequestBase<UpdateManagementReviewResponse>
     {
         public int Id { get; set; }
         public int Number { get; set; }

@@ -48,10 +48,9 @@ namespace AUD9001.Controllers
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> UpdateManagementReview([FromQuery] UpdateManagementReviewRequest request)
+        public Task<IActionResult> UpdateManagementReview([FromQuery] UpdateManagementReviewRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<UpdateManagementReviewRequest, UpdateManagementReviewResponse> (request);
         }
 
         [HttpDelete]
