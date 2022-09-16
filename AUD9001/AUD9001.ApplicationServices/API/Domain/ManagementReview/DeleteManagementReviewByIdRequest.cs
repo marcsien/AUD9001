@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AUD9001.ApplicationServices.API.Domain.ManagementReview
 {
-    public class DeleteManagementReviewByIdRequest : IRequest<DeleteManagementReviewByIdResponse>
+    public class DeleteManagementReviewByIdRequest : RequestBase<DeleteManagementReviewByIdResponse>
     {
         public int ManagementReviewId { get; set; }
     }

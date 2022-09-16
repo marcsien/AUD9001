@@ -54,15 +54,10 @@ namespace AUD9001.Controllers
         }
 
         [HttpDelete]
-        [Route("{managementReviewId}")]
-        public async Task<IActionResult> DeleteManagementReview([FromRoute] int managementReviewId)
+        [Route("")]
+        public Task<IActionResult> DeleteManagementReview([FromBody] DeleteManagementReviewByIdRequest request)
         {
-            var request = new DeleteManagementReviewByIdRequest
-            {
-                ManagementReviewId = managementReviewId
-            };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteManagementReviewByIdRequest, DeleteManagementReviewByIdResponse>(request);
         }
     }
 }
