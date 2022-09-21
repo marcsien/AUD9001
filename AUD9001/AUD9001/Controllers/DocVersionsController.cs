@@ -12,12 +12,11 @@ namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DocVersionsController : ControllerBase
+    public class DocVersionsController : ApiControllerBase
     {
         private readonly IMediator mediator;
-        public DocVersionsController(IMediator mediator)
+        public DocVersionsController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
