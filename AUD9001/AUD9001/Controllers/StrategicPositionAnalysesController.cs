@@ -10,13 +10,12 @@ namespace AUD9001.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StrategicPositionAnalysesController : ControllerBase
+    public class StrategicPositionAnalysesController : ApiControllerBase
     {
         private readonly IMediator mediator;
 
-        public StrategicPositionAnalysesController(IMediator mediator)
+        public StrategicPositionAnalysesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]

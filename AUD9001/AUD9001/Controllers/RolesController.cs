@@ -14,12 +14,11 @@ namespace AUD9001.Controllers
     [Authorize(Roles = "Administrator")]
     [ApiController]
     [Route("[controller]")]
-    public class RolesController : ControllerBase
+    public class RolesController : ApiControllerBase
     {
         private readonly IMediator mediator;
-        public RolesController(IMediator mediator)
+        public RolesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
