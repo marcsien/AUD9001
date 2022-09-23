@@ -18,10 +18,9 @@ namespace AUD9001.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllCompanies([FromQuery] GetCompaniesRequest request)
+        public Task<IActionResult> GetAllCompanies([FromQuery] GetCompaniesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetCompaniesRequest, GetCompaniesResponse>(request);
         }
 
         [HttpGet]
