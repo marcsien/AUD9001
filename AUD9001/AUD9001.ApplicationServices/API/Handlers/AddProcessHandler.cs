@@ -12,6 +12,7 @@ using AUD9001.DataAccess.Entities;
 using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
+using AUD9001.ApplicationServices.API.ErrorHandling;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -32,6 +33,13 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var process = this.mapper.Map<Process>(request);
             var companyFromDB = await this.queryExecutor.Execute(new GetCompanyQuery() { Id = request.CompanyID });
+            if (companyFromDB == null)
+            {
+                return new AddProcessResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Company z Id: " + request.CompanyID)
+                };
+            }
             process.Company = companyFromDB;
             var command = new AddProcessCommand() { Parameter = process};
             var processFromDb = await this.commandExecutor.Execute(command);
