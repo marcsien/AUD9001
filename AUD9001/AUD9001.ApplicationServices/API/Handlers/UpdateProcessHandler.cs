@@ -30,6 +30,20 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateProcessResponse> Handle(UpdateProcessRequest request, CancellationToken cancellationToken)
         {
+            var checkquery = new GetProcessQuery()
+            {
+                Id = request.Id
+            };
+            var process = await this.queryExecutor.Execute(checkquery);
+
+            if (process == null)
+            {
+                return new UpdateProcessResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Procesu z Id: " + request.Id)
+                };
+            }
+
             var command = new UpdateProcessCommand()
             {
                 Parameter = mapper.Map<Process>(request)
@@ -39,6 +53,15 @@ namespace AUD9001.ApplicationServices.API.Handlers
             {
                 var companycommand = new GetCompanyQuery() { Id = (int)request.CompanyID };
                 var company = await this.queryExecutor.Execute(companycommand);
+
+                if (company == null)
+                {
+                    return new UpdateProcessResponse()
+                    {
+                        Error = new ErrorModel("Nie znaleziono Company z Id: " + request.CompanyID)
+                    };
+                }
+
                 command.Parameter.Company = company;
             }
 

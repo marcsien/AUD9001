@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AUD9001.Controllers
 {
-    [Authorize(Roles = "Manager, Administrator")]
+    //[Authorize(Roles = "Manager, Administrator")]
     [ApiController]
     [Route("[controller]")]
     public class ProcessesController : ApiControllerBase

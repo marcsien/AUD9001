@@ -67,8 +67,8 @@ namespace AUD9001
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            services.AddTransient<IQueryExecutor, QueryExecutor>();
-            services.AddTransient<ICommandExecutor, CommandExecutor>();
+            services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<ICommandExecutor, CommandExecutor>();
 
             services.AddTransient<IWeatherConnector, WeatherConnector>();
 
