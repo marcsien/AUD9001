@@ -12,6 +12,7 @@ using AUD9001.DataAccess.Entities;
 using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
+using AUD9001.ApplicationServices.API.ErrorHandling;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -35,6 +36,14 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Id = request.ProcessId
             };
             var process = await this.queryExecutor.Execute(query);
+
+            if (process == null)
+            {
+                return new DeleteProcessByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
 
             var command = new DeleteProcessCommand() 
             { 
