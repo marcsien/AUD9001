@@ -1,4 +1,5 @@
 ﻿using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.API.ErrorHandling;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess.Entities;
@@ -30,6 +31,13 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var query = new GetOutputsQuery() { };
             var outputs = await this.queryexecutor.Execute(query);
+            if (outputs == null)
+            {
+                return new GetOutputsResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var mappedOutputs = this.mapper.Map<List<Domain.Models.Output>>(outputs);
             var response = new GetOutputsResponse() { Data = mappedOutputs };
             return response;

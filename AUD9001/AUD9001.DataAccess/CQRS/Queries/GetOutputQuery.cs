@@ -14,6 +14,7 @@ namespace AUD9001.DataAccess.CQRS.Queries
         public override async Task<Output> Execute(AUD9001StorageContext context)
         {
             var output = await context.Outputs
+                                        .AsNoTracking()
                                         .Include(p => p.Process)
                                         .FirstOrDefaultAsync(x => x.Id == this.Id);
             return output;

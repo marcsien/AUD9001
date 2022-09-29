@@ -33,6 +33,15 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var output = this.mapper.Map<Output>(request);
             var processFromDB = await this.queryExecutor.Execute(new GetProcessQuery() { Id = request.ProcessID });
+
+            if (processFromDB == null)
+            {
+                return new AddOutputResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Procesu z Id: " + request.ProcessID)
+                };
+            }
+
             output.Process = processFromDB;
             var command = new AddOutputCommand() { Parameter = output };
             var outputFromDb = await this.commandExecutor.Execute(command);
