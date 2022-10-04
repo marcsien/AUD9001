@@ -1,4 +1,5 @@
 ﻿using AUD9001.ApplicationServices.API.Domain;
+using AUD9001.ApplicationServices.API.ErrorHandling;
 using AUD9001.DataAccess;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess.Entities;
@@ -28,6 +29,13 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var query = new GetManagementReviewsQuery() { };
             var managementReviews = await this.queryexecutor.Execute(query);
+            if (managementReviews == null)
+            {
+                return new GetManagementReviewsResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var mappedManagementReviews = this.mapper.Map<List<Domain.Models.ManagementReview>>(managementReviews);
             var response = new GetManagementReviewsResponse() { Data = mappedManagementReviews };
             return response;

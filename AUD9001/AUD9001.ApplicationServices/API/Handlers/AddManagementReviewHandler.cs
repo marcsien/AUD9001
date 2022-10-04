@@ -33,6 +33,13 @@ namespace AUD9001.ApplicationServices.API.Handlers
         {
             var managementReview = this.mapper.Map<ManagementReview>(request);
             var companyFromDB = await this.queryExecutor.Execute(new GetCompanyQuery() { Id = request.CompanyID });
+            if (companyFromDB == null)
+            {
+                return new AddManagementReviewResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Company z Id: " + request.CompanyID)
+                };
+            }
             managementReview.Company = companyFromDB;
             var command = new AddManagementReviewCommand() { Parameter = managementReview };
             var managementReviewFromDb = await this.commandExecutor.Execute(command);
