@@ -12,6 +12,8 @@ using AUD9001.DataAccess.Entities;
 using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
+using AUD9001.ApplicationServices.API.ErrorHandling;
+using AUD9001.ApplicationServices.API.Domain;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -35,6 +37,14 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Id = request.ManagementReviewId
             };
             var managementReview = await this.queryExecutor.Execute(query);
+
+            if (managementReview == null)
+            {
+                return new DeleteManagementReviewByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
 
             var command = new DeleteManagementReviewCommand()
             {

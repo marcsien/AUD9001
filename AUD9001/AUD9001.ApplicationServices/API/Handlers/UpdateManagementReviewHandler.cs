@@ -31,6 +31,20 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateManagementReviewResponse> Handle(UpdateManagementReviewRequest request, CancellationToken cancellationToken)
         {
+            var checkquery = new GetManagementReviewQuery()
+            {
+                Id = request.Id
+            };
+            var managementReview = await this.queryExecutor.Execute(checkquery);
+
+            if (managementReview == null)
+            {
+                return new UpdateManagementReviewResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono ManagementReview z Id: " + request.Id)
+                };
+            }
+
             var command = new UpdateManagementReviewCommand()
             {
                 Parameter = mapper.Map<ManagementReview>(request)
@@ -40,6 +54,15 @@ namespace AUD9001.ApplicationServices.API.Handlers
             {
                 var companycommand = new GetCompanyQuery() { Id = (int)request.CompanyID };
                 var company = await this.queryExecutor.Execute(companycommand);
+
+                if (company == null)
+                {
+                    return new UpdateManagementReviewResponse()
+                    {
+                        Error = new ErrorModel("Nie znaleziono Company z Id: " + request.CompanyID)
+                    };
+                }
+
                 command.Parameter.Company = company;
             }
 
