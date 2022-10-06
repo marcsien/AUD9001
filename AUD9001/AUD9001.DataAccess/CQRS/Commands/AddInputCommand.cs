@@ -11,7 +11,7 @@ namespace AUD9001.DataAccess.CQRS.Commands
     {
         public async override Task<Input> Execute(AUD9001StorageContext context)
         {
-            await context.Inputs.AddAsync(this.Parameter);
+            context.Inputs.Attach(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;
         }
