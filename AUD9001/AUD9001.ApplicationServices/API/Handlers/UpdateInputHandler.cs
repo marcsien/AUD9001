@@ -31,6 +31,20 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateInputResponse> Handle(UpdateInputRequest request, CancellationToken cancellationToken)
         {
+            var checkquery = new GetInputQuery()
+            {
+                Id = request.Id
+            };
+            var input = await this.queryExecutor.Execute(checkquery);
+
+            if (input == null)
+            {
+                return new UpdateInputResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Inputu z Id: " + request.Id)
+                };
+            }
+
             var command = new UpdateInputCommand()
             {
                 Parameter = mapper.Map<Input>(request)
@@ -40,6 +54,13 @@ namespace AUD9001.ApplicationServices.API.Handlers
             {
                 var processcommand = new GetProcessQuery() { Id = (int)request.ProcessID };
                 var process = await this.queryExecutor.Execute(processcommand);
+                if (process == null)
+                {
+                    return new UpdateInputResponse()
+                    {
+                        Error = new ErrorModel("Nie znaleziono Procesu z Id: " + request.ProcessID)
+                    };
+                }
                 command.Parameter.Process = process;
             }
 
