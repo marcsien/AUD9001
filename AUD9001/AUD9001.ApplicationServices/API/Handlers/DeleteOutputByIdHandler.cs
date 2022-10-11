@@ -12,6 +12,7 @@ using AUD9001.DataAccess.Entities;
 using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
+using AUD9001.ApplicationServices.API.Domain;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -35,6 +36,14 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Id = request.OutputId
             };
             var output = await this.queryExecutor.Execute(query);
+
+            if (output == null)
+            {
+                return new DeleteOutputByIdResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Outputu z Id: " + request.OutputId)
+                };
+            }
 
             var command = new DeleteOutputCommand()
             {

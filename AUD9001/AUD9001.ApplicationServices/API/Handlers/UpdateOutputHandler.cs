@@ -31,6 +31,20 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateOutputResponse> Handle(UpdateOutputRequest request, CancellationToken cancellationToken)
         {
+            var checkquery = new GetOutputQuery()
+            {
+                Id = request.Id
+            };
+            var output = await this.queryExecutor.Execute(checkquery);
+
+            if (output == null)
+            {
+                return new UpdateOutputResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Outputu z Id: " + request.Id)
+                };
+            }
+
             var command = new UpdateOutputCommand()
             {
                 Parameter = mapper.Map<Output>(request)
@@ -40,6 +54,15 @@ namespace AUD9001.ApplicationServices.API.Handlers
             {
                 var processcommand = new GetProcessQuery() { Id = (int)request.ProcessID };
                 var process = await this.queryExecutor.Execute(processcommand);
+
+                if (process == null)
+                {
+                    return new UpdateOutputResponse()
+                    {
+                        Error = new ErrorModel("Nie znaleziono Procesu z Id: " + request.ProcessID)
+                    };
+                }
+
                 command.Parameter.Process = process;
             }
 
