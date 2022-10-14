@@ -12,6 +12,7 @@ using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
 using AUD9001.ApplicationServices.API.Domain.Company;
+using AUD9001.ApplicationServices.API.Domain;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -30,17 +31,24 @@ namespace AUD9001.ApplicationServices.API.Handlers
 
         public async Task<UpdateCompanyResponse> Handle(UpdateCompanyRequest request, CancellationToken cancellationToken)
         {
+            var checkquery = new GetCompanyQuery()
+            {
+                Id = request.Id
+            };
+            var company = await this.queryExecutor.Execute(checkquery);
+
+            if (company == null)
+            {
+                return new UpdateCompanyResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Company z Id: " + request.Id)
+                };
+            }
+
             var command = new UpdateCompanyCommand()
             {
                 Parameter = mapper.Map<Company>(request)
             };
-
-            //if (request.CompanyID != null)
-            //{
-            //    var companycommand = new GetCompanyQuery() { Id = (int)request.CompanyID };
-            //    var company = await this.queryExecutor.Execute(companycommand);
-            //    command.Parameter.Company = company;
-            //}
 
             var updatedCompany = await this.commandExecutor.Execute(command);
 

@@ -12,6 +12,7 @@ using AUD9001.DataAccess.Entities;
 using AUD9001.DataAccess.CQRS.Commands;
 using AUD9001.DataAccess.CQRS.Queries;
 using AUD9001.DataAccess;
+using AUD9001.ApplicationServices.API.Domain;
 
 namespace AUD9001.ApplicationServices.API.Handlers
 {
@@ -35,6 +36,14 @@ namespace AUD9001.ApplicationServices.API.Handlers
                 Id = request.CompanyId
             };
             var company = await this.queryExecutor.Execute(query);
+
+            if (company == null)
+            {
+                return new DeleteCompanyByIdResponse()
+                {
+                    Error = new ErrorModel("Nie znaleziono Company z Id: " + request.CompanyId)
+                };
+            }
 
             var command = new DeleteCompanyCommand()
             {
