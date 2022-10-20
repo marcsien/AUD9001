@@ -8,6 +8,7 @@ namespace AUD9001.ApplicationServices.API.Domain.Models
 {
     public class ManagementReview
     {
+        public int Id { get; set; }
         public int Number { get; set; }
         public DateTime Date { get; set; }
         public int CompanyID { get; set; }
