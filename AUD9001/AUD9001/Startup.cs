@@ -56,6 +56,12 @@ namespace AUD9001
             {
                 options.AddPolicy("AdminRolePolicy",
                     policy => policy.RequireRole("Administrator"));
+
+                options.AddPolicy("ManagerRolePolicy",
+                    policy => policy.RequireRole("Manager"));
+
+                options.AddPolicy("UserRolePolicy",
+                    policy => policy.RequireRole("User"));
             });
 
             services.AddMvcCore()
