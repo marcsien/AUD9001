@@ -44,7 +44,7 @@ namespace AUD9001
                 options.AddDefaultPolicy(builder =>
                 {
                     builder
-                    .AllowAnyOrigin()
+                    .WithOrigins(Configuration.GetValue<string>("frontEndUrl"))
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
