@@ -14,5 +14,6 @@ namespace AUD9001.DataAccess.Entities
         public DateTime Date { get; set; }
         [Required]
         public Company Company { get; set; }
+        public int CompanyId { get; set; }
     }
 }

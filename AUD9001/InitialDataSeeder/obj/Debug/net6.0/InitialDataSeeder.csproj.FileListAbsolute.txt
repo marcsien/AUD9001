@@ -1,0 +1,15 @@
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\bin\Debug\net6.0\InitialDataSeeder.exe
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\bin\Debug\net6.0\InitialDataSeeder.deps.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\bin\Debug\net6.0\InitialDataSeeder.runtimeconfig.json
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\bin\Debug\net6.0\InitialDataSeeder.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\bin\Debug\net6.0\InitialDataSeeder.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.csproj.AssemblyReference.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.AssemblyInfoInputs.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.AssemblyInfo.cs
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.csproj.CoreCompileInputs.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\refint\InitialDataSeeder.dll
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.pdb
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\InitialDataSeeder.genruntimeconfig.cache
+C:\Users\ms\Desktop\AUD9001\AUD9001\InitialDataSeeder\obj\Debug\net6.0\ref\InitialDataSeeder.dll

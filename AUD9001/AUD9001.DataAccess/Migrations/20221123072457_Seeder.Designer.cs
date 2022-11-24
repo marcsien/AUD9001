@@ -4,6 +4,7 @@ using AUD9001.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AUD9001.DataAccess.Migrations
 {
     [DbContext(typeof(AUD9001StorageContext))]
-    partial class AUD9001StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20221123072457_Seeder")]
+    partial class Seeder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -424,62 +426,6 @@ namespace AUD9001.DataAccess.Migrations
                     b.HasIndex("ProcessId");
 
                     b.ToTable("Inputs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6199),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription1",
-                            Name = "DummyInput1",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6235),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription2",
-                            Name = "DummyInput2",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6238),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription3",
-                            Name = "DummyInput3",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6240),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription4",
-                            Name = "DummyInput4",
-                            ProcessId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6243),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription5",
-                            Name = "DummyInput5",
-                            ProcessId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6245),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyInputDescription6",
-                            Name = "DummyInput6",
-                            ProcessId = 2
-                        });
                 });
 
             modelBuilder.Entity("AUD9001.DataAccess.Entities.InterestedPerson", b =>
@@ -528,29 +474,6 @@ namespace AUD9001.DataAccess.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("ManagementReviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CompanyId = 1,
-                            Date = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6312),
-                            Number = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CompanyId = 1,
-                            Date = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6318),
-                            Number = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CompanyId = 1,
-                            Date = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6320),
-                            Number = 3
-                        });
                 });
 
             modelBuilder.Entity("AUD9001.DataAccess.Entities.Observation", b =>
@@ -608,62 +531,6 @@ namespace AUD9001.DataAccess.Migrations
                     b.HasIndex("ProcessId");
 
                     b.ToTable("Outputs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6276),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6279),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6282),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6284),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6286),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdditionDate = new DateTime(2022, 11, 24, 7, 31, 38, 718, DateTimeKind.Local).AddTicks(6289),
-                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "DummyOutputDescription1",
-                            Name = "DummyOutput1",
-                            ProcessId = 2
-                        });
                 });
 
             modelBuilder.Entity("AUD9001.DataAccess.Entities.Permission", b =>
@@ -714,13 +581,6 @@ namespace AUD9001.DataAccess.Migrations
                             CompanyId = 1,
                             Description = "Proces produkcyjny",
                             Name = "Produkcja"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CompanyId = 1,
-                            Description = "Proces kontrolujący jakość",
-                            Name = "Kontrola Jakości"
                         });
                 });
 

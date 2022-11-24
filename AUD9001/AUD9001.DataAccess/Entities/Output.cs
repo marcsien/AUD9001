@@ -15,5 +15,6 @@ namespace AUD9001.DataAccess.Entities
         public string Description { get; set; }
         [Required]
         public Process Process { get; set; }
+        public int ProcessId { get; set; }
     }
 }
